@@ -15,10 +15,6 @@ export class Oauth2Component {
     this.matIconRegistry.addSvgIcon('github', this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/github.svg'));
   }
 
-  login() {
-    window.location.href = 'http://localhost:8080/login';
-  }
-
   google() {
     window.location.href = 'http://localhost:8080/oauth2/authorization/google'
   }

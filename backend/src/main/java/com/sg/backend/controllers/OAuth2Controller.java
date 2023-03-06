@@ -8,13 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/login")
+@RequestMapping
 @CrossOrigin(origins = "*")
-public class GitHubController {
-    @GetMapping("/oauth2/code/github")
-    public String handleGithubCallback(@AuthenticationPrincipal OAuth2User principal) {
+public class OAuth2Controller {
+  
+    @GetMapping("/auth/google/callback")
+    @CrossOrigin(origins = "*")
+    public String handleGoogleCallback(@AuthenticationPrincipal OAuth2User principal) {
       // Do something with the user data
       return "redirect:http://localhost:4200/";
     }
-  
+
+    @GetMapping("/login/oauth2/code/github")
+    @CrossOrigin(origins = "*")
+    public String handleGithubCallback(@AuthenticationPrincipal OAuth2User principal) {
+    
+      return "redirect:http://localhost:4200/";
+    }
 }

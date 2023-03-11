@@ -12,11 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AccountComponent } from './components/account.component';
+import { LoginComponent } from './components/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
-  { path: 'login', component: Oauth2Component },
+  { path: 'login/oauth/access_token', component: Oauth2Component },
+  { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     Oauth2Component,
     MainComponent,
-    AccountComponent
+    AccountComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,

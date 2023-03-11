@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { switchMap } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
@@ -13,25 +11,44 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./oauth2.component.css']
 })
 export class Oauth2Component implements OnInit {
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private http: HttpClient) {
-    this.matIconRegistry.addSvgIcon('google-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/google-icon.svg'));
-    this.matIconRegistry.addSvgIcon('github', this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/github.svg'));
+
+  code!: string;
+  state!: string;
+  accessToken!: string;
+
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+
   }
 
-  google() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/google'
-  }
-
-  github() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/github'
-  }
-  
   ngOnInit() {
-   
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.code = params['code'];
+
+      console.log(this.code);
+      if (this.code) {
+        this.getToken(this.code).subscribe(response => {
+          console.log('Response:', response);
+          this.accessToken = response.access_token;
+          console.log('Access token:', this.accessToken);
+        });
+      } else {
+        console.log('Code or state parameter is missing');
+      }
+    });
   }
-  
- 
-  
-  
+
+  getToken(code: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      Accept: 'application/json'
+    });
+
+    const params = new HttpParams()
+      .set('code', code);
+    console.log(params);
+
+    return this.http.post<any>('http://localhost:8080/login/oauth/access_token', params, { headers });
+  }
+
 
 }

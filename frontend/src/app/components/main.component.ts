@@ -10,7 +10,4 @@ export class MainComponent {
 
   constructor(private router:Router){}
 
-  OAuth2() {
-    this.router.navigate(['/login']);
-  }
 }

@@ -11,11 +11,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AccountComponent } from './components/account.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
   { path: 'login', component: Oauth2Component },
+  { path: 'account', component: AccountComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     Oauth2Component,
-    MainComponent
+    MainComponent,
+    AccountComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +37,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

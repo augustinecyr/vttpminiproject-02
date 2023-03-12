@@ -1,9 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { UserData } from '../models';
-
-
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-account',
@@ -11,13 +9,14 @@ import { UserData } from '../models';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+  userData: UserData | undefined;
 
-  userData!: UserData;
+  constructor(private userService: UserService, private router: Router) { }
 
-  constructor() { }
-
-  ngOnInit() {
-
+  ngOnInit(): void {
+    this.userData = this.userService.userData;
+    if (!this.userData) {
+      this.router.navigate(['/login']);
+    }
   }
-
 }

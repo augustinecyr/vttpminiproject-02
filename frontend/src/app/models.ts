@@ -1,5 +1,5 @@
 export interface UserData {
-    email: string;
-    name: string;
-    picture: string;
+    login: string;
+    id: string;
+    html_url: string;
 }

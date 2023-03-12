@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-
+import { UserData } from '../models';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-oauth2',
@@ -15,10 +15,9 @@ export class Oauth2Component implements OnInit {
   code!: string;
   state!: string;
   accessToken!: string;
+  userData!: UserData;
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
-
-  }
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -30,6 +29,22 @@ export class Oauth2Component implements OnInit {
           console.log('Response:', response);
           this.accessToken = response.access_token;
           console.log('Access token:', this.accessToken);
+
+          this.getUser(this.accessToken).subscribe(user => {
+            console.log('User:', user);
+            this.userData = {
+              login: user.login,
+              id: user.id,
+              html_url: user.html_url,
+            };
+            this.userService.setUserData(this.userData);
+            setTimeout(() => {
+              this.router.navigate(['/account']);
+            }, 1500);
+            console.log(user.login);
+            console.log(user.id);
+            console.log(user.html_url);
+          });
         });
       } else {
         console.log('Code or state parameter is missing');
@@ -50,5 +65,13 @@ export class Oauth2Component implements OnInit {
     return this.http.post<any>('http://localhost:8080/login/oauth/access_token', params, { headers });
   }
 
+  getUser(accessToken: string): Observable<UserData> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`,
+      Accept: 'application/json'
+    });
+
+    return this.http.get<UserData>('https://api.github.com/user', { headers });
+  }
 
 }

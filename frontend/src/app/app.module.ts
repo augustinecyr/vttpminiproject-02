@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AccountComponent } from './components/account.component';
 import { LoginComponent } from './components/login.component';
+import { UserService } from './user.service';
+import { MatCardModule } from '@angular/material/card';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -40,9 +42,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

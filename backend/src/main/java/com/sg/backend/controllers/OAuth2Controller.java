@@ -41,7 +41,7 @@ public class OAuth2Controller {
   @CrossOrigin(origins = "*", allowedHeaders = "*")
   public String handleGoogleCallback(@AuthenticationPrincipal OAuth2User principal) {
 
-    return "redirect:http://localhost:4200";
+    return "redirect:http://localhost:4200/token";
 
   }
 
@@ -68,6 +68,48 @@ public class OAuth2Controller {
         .queryParam("client_id", GITHUB_ID)
         .queryParam("client_secret", GITHUB_SECRET)
         .queryParam("code", code)
+        .toUriString();
+
+    System.out.println(accessTokenEndpoint);
+
+    HttpEntity<String> requestEntity = new HttpEntity<>(headers);
+
+    ResponseEntity<Map<String, String>> responseEntity = restTemplate.exchange(accessTokenEndpoint, HttpMethod.POST,
+        requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
+
+    System.out.println(responseEntity);
+
+    if (responseEntity.getStatusCode() == HttpStatus.OK) {
+      // Parse the access token from the response body
+      Map<String, String> responseBody = responseEntity.getBody();
+      String accessToken = responseBody.get("access_token");
+      System.out.println(accessToken);
+      return responseBody;
+    } else {
+      throw new RuntimeException("Failed to exchange authorization code for access token");
+
+    }
+
+  }
+
+  @PostMapping("/token")
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
+  public Map<String, String> exchangeGoogleCodeForToken(@RequestParam("code") String code) {
+    // Send a POST request to https://oauth2.googleapis.com/token 
+    // with the authorization code to exchange it for an access token
+    System.out.println(code);
+    RestTemplate restTemplate = new RestTemplate();
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("Content-Type", "application/x-www-form-urlencoded");
+    headers.set("Accept", "application/json");
+
+    String accessTokenEndpoint = UriComponentsBuilder
+        .fromUriString("https://oauth2.googleapis.com/token")
+        .queryParam("client_id", GOOGLE_ID)
+        .queryParam("client_secret", GOOGLE_SECRET)
+        .queryParam("code", code)
+        .queryParam("grant_type", "authorization_code")
+        .queryParam("redirect_uri", "http://localhost:4200/token")
         .toUriString();
 
     System.out.println(accessTokenEndpoint);

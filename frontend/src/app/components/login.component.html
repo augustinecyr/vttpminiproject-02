@@ -6,30 +6,20 @@
   <button mat-button routerLink="/account" class="button-anim">Account</button>
 </mat-toolbar>
 
-<div class="container">
-  <div class="card-container">
-    <mat-card class="custom-card">
-      <mat-card-header class="custom-header">
-        <mat-card-title>Connect with Google</mat-card-title>
-      </mat-card-header>
+<mat-card class="custom-card mat-elevation-z2">
+  <mat-card-content class="custom-content">
+    <mat-card class="custom-card mat-elevation-z0">
       <mat-card-content class="custom-content">
-        <button mat-raised-button color="primary" class="custom-button" (click)="google()">
+        <h2 class="custom-title">Sign in to Footrix</h2>
+        <button mat-raised-button  class="custom-button" (click)="google()">
           <mat-icon svgIcon="google-icon"></mat-icon>
-          Connect
+          Connect with Google
         </button>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="custom-card">
-      <mat-card-header class="custom-header">
-        <mat-card-title>Connect with Github</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="custom-content">
-        <button mat-raised-button color="primary" class="custom-button" (click)="github()">
+        <button mat-raised-button  class="custom-button" (click)="github()">
           <mat-icon svgIcon="github"></mat-icon>
-          Connect
+          Connect with Github
         </button>
       </mat-card-content>
     </mat-card>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

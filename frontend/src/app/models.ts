@@ -2,4 +2,9 @@ export interface UserData {
     login: string;
     id: string;
     html_url: string;
+    avatar_url:string;
+}
+
+export interface GoogleData {
+    
 }

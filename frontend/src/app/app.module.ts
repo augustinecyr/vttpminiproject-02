@@ -15,11 +15,13 @@ import { AccountComponent } from './components/account.component';
 import { LoginComponent } from './components/login.component';
 import { UserService } from './user.service';
 import { MatCardModule } from '@angular/material/card';
+import { Googleoauth2Component } from './components/googleoauth2.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
   { path: 'login/oauth/access_token', component: Oauth2Component },
+  { path: 'token', component: Googleoauth2Component },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     Oauth2Component,
     MainComponent,
     AccountComponent,
-    LoginComponent
+    LoginComponent,
+    Googleoauth2Component
   ],
   imports: [
     FormsModule,

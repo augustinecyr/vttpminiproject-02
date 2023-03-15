@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserData } from '../models';
+import { GoogleData, UserData } from '../models';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,10 +10,11 @@ import { UserService } from '../user.service';
 })
 export class AccountComponent implements OnInit {
   userData: UserData | undefined;
-
+  googleUserData: GoogleData | undefined;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.googleUserData = this.userService.googleData;
     this.userData = this.userService.userData;
     if (!this.userData) {
       this.router.navigate(['/login']);

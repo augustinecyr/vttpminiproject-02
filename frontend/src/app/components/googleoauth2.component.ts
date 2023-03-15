@@ -28,16 +28,20 @@ export class Googleoauth2Component implements OnInit {
           this.googleToken = response.access_token;
           console.log('Access token:', this.googleToken);
           // post the token using getGoogleToken
-          this.getGoogleToken(this.googleToken).subscribe(user => {
+          this.getUser(this.googleToken).subscribe(user => {
             console.log('User:', user);
             this.googleData = {
+              name: user.name,
+              email: user.email,
+              picture: user.picture,
+              sub: user.sub,
             };
             this.userService.setGoogleData(this.googleData);
             // fake a delay
             setTimeout(() => {
               this.router.navigate(['/account']);
             }, 1500);
-           console.log();
+            console.log();
           });
         });
       } else {
@@ -45,7 +49,7 @@ export class Googleoauth2Component implements OnInit {
       }
     });
   }
-
+  // exchange temporary token for access token
   getGoogleToken(code: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -57,5 +61,14 @@ export class Googleoauth2Component implements OnInit {
     console.log(params);
 
     return this.http.post<any>('http://localhost:8080/token', params, { headers });
+  }
+  // use the google token and get the email & name
+  getUser(googleToken: string): Observable<GoogleData> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${googleToken}`,
+      Accept: 'application/json'
+    });
+
+    return this.http.get<GoogleData>('https://openidconnect.googleapis.com/v1/userinfo', { headers });
   }
 }

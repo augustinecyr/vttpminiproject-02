@@ -6,5 +6,8 @@ export interface UserData {
 }
 
 export interface GoogleData {
-    
+    email:string;
+    picture: string;
+    name: string;
+    sub: string;
 }

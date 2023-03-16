@@ -7,14 +7,13 @@ import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-oauth2',
-  templateUrl: './oauth2.component.html',
-  styleUrls: ['./oauth2.component.css']
+  templateUrl: './githuboauth2.component.html',
+  styleUrls: ['./githuboauth2.component.css']
 })
-export class Oauth2Component implements OnInit {
+export class GithubOauth2Component implements OnInit {
   
   code!: string;
   state!: string;
- 
   accessToken!: string;
   userData!: UserData;
 

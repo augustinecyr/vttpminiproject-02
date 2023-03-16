@@ -8,15 +8,28 @@
 
 <mat-card class="custom-card mat-elevation-z2">
   <mat-card-content class="custom-content">
-    <mat-card class="custom-card mat-elevation-z0">
+    <mat-card *ngIf="userData && !googleUserData" class="custom-card mat-elevation-z0">
       <mat-card-content class="custom-content">
-        <img [src]="userData?.avatar_url" alt="{{userData?.login}}" class="avatar-image">
+        <img [src]="userData.avatar_url" alt="{{userData.login}}" class="avatar-image">
         <div class="user-info">
-          <mat-card-title>Welcome, {{userData?.login}}!</mat-card-title>
-          <p>Your user ID is {{userData?.id}}.</p>
-          <p>Your profile URL is <a href="{{userData?.html_url}}">{{userData?.html_url}}</a>.</p>
+          <mat-card-title>Welcome, {{userData.login}}!</mat-card-title>
+          <p>Your user ID is {{userData.id}}.</p>
+          <p>Your profile URL is <a href="{{userData.html_url}}">{{userData.html_url}}</a>.</p>
           <mat-card-actions>
-            <button mat-raised-button color="warn" class="btn-logout" routerLink="/login">Logout</button>
+            <button mat-raised-button color="warn" class="btn-logout" (click)="logout()" routerLink="/login">Logout</button>
+          </mat-card-actions>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="googleUserData" class="custom-card mat-elevation-z0">
+      <mat-card-content class="custom-content">
+        <img [src]="googleUserData.picture" alt="{{googleUserData.picture}}" class="avatar-image">
+        <div class="user-info">
+          <mat-card-title>Welcome, {{googleUserData.name}}!</mat-card-title>
+          <p>Your email address is {{googleUserData.email}}.</p>
+          <mat-card-actions>
+            <button mat-raised-button color="warn" class="btn-logout" (click)="logout()" routerLink="/login">Logout</button>
           </mat-card-actions>
         </div>
       </mat-card-content>

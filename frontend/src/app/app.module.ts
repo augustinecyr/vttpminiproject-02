@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { Oauth2Component } from './components/oauth2.component';
+import { GithubOauth2Component } from './components/githuboauth2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,11 +16,12 @@ import { LoginComponent } from './components/login.component';
 import { UserService } from './user.service';
 import { MatCardModule } from '@angular/material/card';
 import { Googleoauth2Component } from './components/googleoauth2.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
-  { path: 'login/oauth/access_token', component: Oauth2Component },
+  { path: 'login/oauth/access_token', component: GithubOauth2Component },
   { path: 'token', component: Googleoauth2Component },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    Oauth2Component,
+    GithubOauth2Component,
     MainComponent,
     AccountComponent,
     LoginComponent,
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

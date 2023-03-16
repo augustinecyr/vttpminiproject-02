@@ -16,8 +16,15 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.googleUserData = this.userService.googleData;
     this.userData = this.userService.userData;
-    if (!this.userData) {
+    if (!this.userData && !this.googleUserData) {
+      console.log('No account information exists. Please login')
       this.router.navigate(['/login']);
     }
   }
+
+  logout(): void {
+    console.log('Logging out.')
+    this.userService.logout();
+  }
+
 }

@@ -1,8 +1,50 @@
 <mat-toolbar color="primary" class="black-toolbar">
-    <span class="spacer"></span>
-    <button mat-button routerLink="/" class="button-anim">Home</button>
-    <button mat-button routerLink="/about" class="button-anim">About</button>
-    <button mat-button routerLink="/contact" class="button-anim">Contact</button>
-    <button mat-button routerLink="/account" class="button-anim">Account</button>
-  </mat-toolbar>
-  
+  <div style="display: flex; align-items: center;">
+    <button mat-button routerLink="/" class="button-anim">
+    <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
+  </button>
+    <div style="flex: 1;">
+      <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+      <mat-menu #dashboardMenu="matMenu">
+        <button mat-menu-item routerLink="/analytics">Analytics</button>
+        <button mat-menu-item routerLink="/matches">Matches</button>
+        <button mat-menu-item routerLink="/players">Players</button>
+      </mat-menu>
+      <button mat-button routerLink="/account" class="button-anim">Account</button>
+      <button mat-button routerLink="/contact" class="button-anim">Contact</button>
+      <button mat-button routerLink="/about" class="button-anim">About Us</button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Team Performance</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>View the performance of your team over the season.</p>
+      <button mat-button color="accent" routerLink="/analytics/team-performance">View Team Performance</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Player Stats</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>View the stats of your team's players.</p>
+      <button mat-button color="accent" routerLink="/players/stats">View Player Stats</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Match Analysis</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>View detailed analysis of your team's past matches.</p>
+      <button mat-button color="accent" routerLink="/matches/analysis">View Match Analysis</button>
+    </mat-card-content>
+  </mat-card>
+</div>

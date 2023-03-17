@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { GithubOauth2Component } from './components/githuboauth2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +16,8 @@ import { UserService } from './user.service';
 import { MatCardModule } from '@angular/material/card';
 import { Googleoauth2Component } from './components/googleoauth2.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -49,6 +50,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatSnackBarModule,
+    MatExpansionModule,
+    MatMenuModule,
+    
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

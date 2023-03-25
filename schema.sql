@@ -6,3 +6,11 @@ create database footrix;
 use footrix;
 commit;
 
+CREATE TABLE `contact` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `attachment` blob,
+  PRIMARY KEY (`id`)
+);

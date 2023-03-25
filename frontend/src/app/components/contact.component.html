@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="black-toolbar">
+    <div style="display: flex; align-items: center;">
+      <button mat-button routerLink="/" class="button-anim">
+      <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
+    </button>
+      <div style="flex: 1;">
+        <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+        <mat-menu #dashboardMenu="matMenu">
+          <button mat-menu-item routerLink="/analytics">Analytics</button>
+          <button mat-menu-item routerLink="/matches">Matches</button>
+          <button mat-menu-item routerLink="/players">Players</button>
+        </mat-menu>
+        <button mat-button routerLink="/account" class="button-anim">Account</button>
+        <button mat-button routerLink="/contact" class="button-anim">Contact</button>
+        <button mat-button routerLink="/about" class="button-anim">About Us</button>
+      </div>
+    </div>
+  </mat-toolbar>
+  <!-- Contact Form -->
+  <br><br>
+  <div class="form-container mat-elevation-z4">
+    <h1 class="form-title">Contact Us</h1>
+    <form [formGroup]="form" (ngSubmit)="processForm()" class="form-content" enctype="multipart/form-data">
+      <mat-form-field class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title" required>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Text</mat-label>
+        <textarea matInput formControlName="text" required></textarea>
+      </mat-form-field>
+      <div class="attachment-container">
+        <mat-label>Attachments</mat-label>
+        <mat-icon>attach_file</mat-icon>
+        <input type="file" formControlName="attachment" #attachment>
+      </div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="form-submit">Submit</button>
+    </form>
+  </div>
+  

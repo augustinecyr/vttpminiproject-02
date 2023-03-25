@@ -71,6 +71,19 @@
 			<artifactId>spring-security-oauth2-jose</artifactId>
 			<version>5.7.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>6.0.6</version>
+		</dependency>
+		<!-- Multi Part -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.5</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

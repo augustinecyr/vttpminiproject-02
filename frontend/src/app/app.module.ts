@@ -18,6 +18,10 @@ import { Googleoauth2Component } from './components/googleoauth2.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
+import { ContactComponent } from './components/contact.component';
+import { ContactService } from './contact.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -26,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'token', component: Googleoauth2Component },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -36,7 +41,8 @@ const appRoutes: Routes = [
     MainComponent,
     AccountComponent,
     LoginComponent,
-    Googleoauth2Component
+    Googleoauth2Component,
+    ContactComponent,
   ],
   imports: [
     FormsModule,
@@ -52,9 +58,11 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatExpansionModule,
     MatMenuModule,
+    MatInputModule,
+    MatFormFieldModule
     
   ],
-  providers: [UserService],
+  providers: [UserService,ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ package com.sg.backend.controllers;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -20,11 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.sg.backend.repositories.OAuth2Repository;
+
 @RestController
 @RequestMapping
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OAuth2Controller {
-
+  @Autowired
+  private OAuth2Repository oauth2Repo;
   @Value("${GITHUB_ID}")
   private String GITHUB_ID;
 
@@ -84,6 +88,7 @@ public class OAuth2Controller {
       Map<String, String> responseBody = responseEntity.getBody();
       String accessToken = responseBody.get("access_token");
       System.out.println(accessToken);
+      oauth2Repo.saveAccessToken(accessToken);
       return responseBody;
     } else {
       throw new RuntimeException("Failed to exchange authorization code for access token");
@@ -126,6 +131,7 @@ public class OAuth2Controller {
       Map<String, String> responseBody = responseEntity.getBody();
       String accessToken = responseBody.get("access_token");
       System.out.println(accessToken);
+      oauth2Repo.saveAccessToken(accessToken);
       return responseBody;
     } else {
       throw new RuntimeException("Failed to exchange authorization code for access token");

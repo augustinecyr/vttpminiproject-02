@@ -26,17 +26,17 @@ export class ContactComponent {
 	processForm() {
 		const contact = this.form.value as Contact
 		contact.attachment = this.attachment.nativeElement.files[0]
-
-		console.info('>>> form: ', contact)
+		console.log('assembling the form.....')
+		console.info('form: ', contact)
 
 		this.postSvc.postContact(contact)
 			.then(response => {
-			//	console.info(`form id: ${response.formId}`)
 				this.form = this.createForm()
 			})
 			.catch(error => {
-				console.error('>>> error: ', error)
+				console.error('error: ', error)
 			})
+		console.info('form sent to backend')
 	}
 
 	createForm(): FormGroup {

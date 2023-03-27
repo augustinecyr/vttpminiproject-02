@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sg.backend.models.Contact;
-import com.sg.backend.repositories.ContactRepository;
+import com.sg.backend.service.ContactService;
 
 @RestController
 @RequestMapping
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ContactController {
+    
     @Autowired
-    private ContactRepository conRepo;
+    private ContactService conSvc;
 
     @PostMapping(path = "/contact", consumes = "multipart/form-data")
     public ResponseEntity<String> postContact(@ModelAttribute Contact form) throws IOException {
@@ -28,6 +29,16 @@ public class ContactController {
         String text = form.getText();
         MultipartFile attachment = form.getAttachment();
         System.out.println("Received form from Angular - email: " + email + ", title: " + title + ", text: " + text + ", attachment:" + attachment);
+        Contact contact = new Contact();
+        contact.setEmail(email);
+        contact.setTitle(title);
+        contact.setText(text);
+        // multipart to blob type
+        byte[] attachmentBytes = attachment.getBytes();
+        contact.setAttachmentSQL(attachmentBytes);
+        // print the object Contact
+        System.out.println(contact);
+        conSvc.createNewEntry(contact);
         System.out.println("Form successfully received from Angular, awaiting HTTP 200 Status");
          return ResponseEntity.ok("");
     }

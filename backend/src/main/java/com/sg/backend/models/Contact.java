@@ -7,7 +7,8 @@ public class Contact {
     private String title;
     private String text;
     private MultipartFile attachment;
-
+    private byte[] attachmentSQL;
+    
     public Contact() {}
 
     public String getEmail() {
@@ -50,5 +51,13 @@ public class Contact {
                 ", text='" + text + '\'' +
                 ", attachment=" + attachment +
                 '}';
+    }
+
+    public byte[] getAttachmentSQL() {
+        return attachmentSQL;
+    }
+
+    public void setAttachmentSQL(byte[] attachmentSQL) {
+        this.attachmentSQL = attachmentSQL;
     }
 }

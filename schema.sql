@@ -11,6 +11,6 @@ CREATE TABLE `contact` (
   `email` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL,
-  `attachment` blob,
+  `attachment` mediumblob,
   PRIMARY KEY (`id`)
 );

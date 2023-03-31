@@ -22,3 +22,9 @@ export interface Contact {
 export interface FormResponse {
 	formId: string;
 }
+
+export interface Club {
+    name: string;
+    id: string;
+    heroImage: string;
+}

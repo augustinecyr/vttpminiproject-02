@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="black-toolbar">
+    <div style="display: flex; align-items: center;">
+      <button mat-button routerLink="/" class="button-anim">
+      <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
+    </button>
+      <div style="flex: 1;">
+        <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+        <mat-menu #dashboardMenu="matMenu">
+          <button mat-menu-item routerLink="/analytics">Analytics</button>
+          <button mat-menu-item routerLink="/matches">Matches</button>
+          <button mat-menu-item routerLink="/players">Players</button>
+          <button mat-menu-item routerLink="/club">Clubs</button>
+        </mat-menu>
+        <button mat-button routerLink="/account" class="button-anim">Account</button>
+        <button mat-button routerLink="/contact" class="button-anim">Contact</button>
+        <button mat-button routerLink="/about" class="button-anim">About Us</button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <button mat-raised-button id="manchester-united" class="custom-button" (click)="getSquad('985')" routerLink="/club/squad" *ngIf="!(squads$ | async)">
+    <mat-icon svgIcon="manchester-united"></mat-icon>
+  </button>
+  
+  <ul *ngIf="squads$ | async as squads" class="squads-container">
+    <li *ngFor="let squad of squads" class="squad-card">
+      <img [src]="squad.heroImage" alt="{{ squad.name }} image">
+      <h3>{{ squad.name }}</h3>
+    </li>
+  </ul>
+  

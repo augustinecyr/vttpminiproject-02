@@ -9,6 +9,7 @@
         <button mat-menu-item routerLink="/analytics">Analytics</button>
         <button mat-menu-item routerLink="/matches">Matches</button>
         <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/club">Clubs</button>
       </mat-menu>
       <button mat-button routerLink="/account" class="button-anim">Account</button>
       <button mat-button routerLink="/contact" class="button-anim">Contact</button>
@@ -45,6 +46,15 @@
     <mat-card-content>
       <p>View detailed analysis of your team's past matches.</p>
       <button mat-button color="accent" routerLink="/matches/analysis">View Match Analysis</button>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Clubs</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>View the squads of all the clubs.</p>
+      <button mat-button color="accent" routerLink="/club">View Squads</button>
     </mat-card-content>
   </mat-card>
 </div>

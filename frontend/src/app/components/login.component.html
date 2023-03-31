@@ -1,14 +1,16 @@
 <mat-toolbar color="primary" class="black-toolbar">
   <div style="display: flex; align-items: center;">
     <button mat-button routerLink="/" class="button-anim">
-    <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
-  </button>
+      <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
+    </button>
     <div style="flex: 1;">
-      <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+      <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon
+          matSuffix>arrow_drop_down</mat-icon></button>
       <mat-menu #dashboardMenu="matMenu">
         <button mat-menu-item routerLink="/analytics">Analytics</button>
         <button mat-menu-item routerLink="/matches">Matches</button>
         <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/club">Clubs</button>
       </mat-menu>
       <button mat-button routerLink="/account" class="button-anim">Account</button>
       <button mat-button routerLink="/contact" class="button-anim">Contact</button>
@@ -16,21 +18,17 @@
     </div>
   </div>
 </mat-toolbar>
-
+<br><br>
 <mat-card class="custom-card mat-elevation-z2">
   <mat-card-content class="custom-content">
-    <mat-card class="custom-card mat-elevation-z0">
-      <mat-card-content class="custom-content">
-        <h2 class="custom-title">Sign in to Footrix</h2>
-        <button mat-raised-button  class="custom-button" (click)="google()">
-          <mat-icon svgIcon="google-icon"></mat-icon>
-          Connect with Google
-        </button>
-        <button mat-raised-button  class="custom-button" (click)="github()">
-          <mat-icon svgIcon="github"></mat-icon>
-          Connect with Github
-        </button>
-      </mat-card-content>
-    </mat-card>
+    <h2 class="custom-title">Sign in to Footrix</h2>
+    <button mat-raised-button class="custom-button" (click)="google()">
+      <mat-icon svgIcon="google-icon"></mat-icon>
+      Connect with Google
+    </button>
+    <button mat-raised-button class="custom-button" (click)="github()">
+      <mat-icon svgIcon="github"></mat-icon>
+      Connect with Github
+    </button>
   </mat-card-content>
 </mat-card>

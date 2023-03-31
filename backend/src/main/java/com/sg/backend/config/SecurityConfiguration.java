@@ -18,13 +18,13 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable().antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/login", "/error", "/auth/google/callback",
-                        "/login/oauth2/code/github","/login/oauth/access_token","/login/oauth/access_token?code=", "/token", "/contact")
+                        "/login/oauth2/code/github","/login/oauth/access_token","/login/oauth/access_token?code=", "/token", "/contact","/club/squad")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 // the path for login
-                .oauth2Login();
+                .oauth2Login().loginPage("http://localhost:4200/login");
         return http.build();
     }
 

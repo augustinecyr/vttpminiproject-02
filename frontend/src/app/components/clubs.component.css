@@ -1,0 +1,111 @@
+/* Toolbar */
+.black-toolbar {
+    background-color: #716b6b;
+    position: relative;
+}
+
+.black-toolbar::before,
+.black-toolbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: inherit;
+    z-index: -1;
+}
+
+.black-toolbar::before {
+    left: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.black-toolbar::after {
+    right: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 20px;
+    z-index: 9999;
+}
+
+.button-anim {
+    transition: transform 0.3s;
+}
+
+.button-anim:hover {
+    transform: translateY(-3px);
+}
+
+.mat-menu-panel {
+    background-color: #424242;
+}
+
+.mat-menu-item:hover {
+    background-color: #757575;
+}
+
+.mat-menu-trigger:hover {
+    cursor: pointer;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.dashboard-card {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Squad */
+.squads-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  .squad-card {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .squad-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .squad-card img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .squad-card h3 {
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    padding: 0 20px;
+  }
+  

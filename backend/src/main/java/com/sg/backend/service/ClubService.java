@@ -18,18 +18,17 @@ import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
-import jakarta.json.JsonString;
 import jakarta.json.JsonValue;
 
 @Service
 public class ClubService {
-    
-    private static final String URL = "https://transfermarket.p.rapidapi.com/clubs/get-squad";
+
+	private static final String URL = "https://transfermarket.p.rapidapi.com/clubs/get-squad";
 
 	@Value("${X_RapidAPI_Key}")
 	private String rapidAPI;
 
-    public List<Club> getSquad(String id) {
+	public List<Club> getSquad(String id) {
 
 		String payload;
 		System.out.println("Attempting request to TransferMarkt.com....");
@@ -45,10 +44,10 @@ public class ClubService {
 
 			RequestEntity<Void> req = RequestEntity
 					.get(url)
-					.header("X-RapidAPI-Key", "%s".formatted(rapidAPI))// rapidAPI key
+					.header("X-RapidAPI-Key", "%s".formatted(rapidAPI))
 					.build();
 
-			System.out.println(">>> [url]: " + url); // prints out the URL that is built
+			System.out.println(">>> [url]: " + url);
 
 			System.out.println("-----------------------------------------------------------");
 
@@ -59,11 +58,11 @@ public class ClubService {
 
 			payload = resp.getBody();
 
-			System.out.println(">>> [payload]: " + payload); // the payload
+			System.out.println(">>> [payload]: " + payload);
 			System.out.println("-----------------------------------------------------------");
 
 		} catch (Exception ex) {
-			System.err.printf("Error: %s\n", ex.getMessage()); // troubleshooting
+			System.err.printf("Error: %s\n", ex.getMessage());
 			return Collections.emptyList();
 		}
 
@@ -74,23 +73,20 @@ public class ClubService {
 			JsonObject j = r.readObject();
 
 			JsonArray squadList = j.getJsonArray("squad");
-			JsonObject first = squadList.getJsonObject(0); 
-			JsonString firstName = first.getJsonString("name");
-			
+
 			System.out.println("Total number of players: " + squadList.size());
 			System.out.println("-----------------------------------------------------------");
-			System.out.println("Top of the table: " + firstName);
-			System.out.println("-----------------------------------------------------------");
-	
-
+			// had the jsonvalueimpl cast issue
 			for (JsonValue v : j.getJsonArray("squad")) {
-
-				squads.add(Club.create((JsonObject) v));
-
+				if (v.getValueType() == JsonValue.ValueType.OBJECT) {
+					try {
+						squads.add(Club.create((JsonObject) v));
+					} catch (Exception ex) {
+						System.err.printf("Error creating club: %s\n", ex.getMessage());
+					}
+				}
 			}
-
 		}
-
 		return squads;
 	}
 }

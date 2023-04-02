@@ -5,9 +5,10 @@ import java.io.StringReader;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
 
 public class Club {
-    
+
     private String name;
     private String id;
     private String heroImage;
@@ -15,18 +16,23 @@ public class Club {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getHeroImage() {
         return heroImage;
     }
+
     public void setHeroImage(String heroImage) {
         this.heroImage = heroImage;
     }
@@ -53,11 +59,18 @@ public class Club {
                 .add("heroImage", this.heroImage)
                 .build();
     }
+
+    public JsonValue toJsonValue() {
+        return Json.createObjectBuilder()
+                .add("id", this.id.toString())
+                .add("name", this.name)
+                .add("heroImage", this.heroImage)
+                .build();
+    }
+
     @Override
     public String toString() {
         return "Club [name=" + name + ", id=" + id + ", heroImage=" + heroImage + "]";
     }
 
-    
-    
 }

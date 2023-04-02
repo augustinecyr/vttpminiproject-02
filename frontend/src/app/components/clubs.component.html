@@ -1,31 +1,94 @@
 <mat-toolbar color="primary" class="black-toolbar">
-    <div style="display: flex; align-items: center;">
-      <button mat-button routerLink="/" class="button-anim">
+  <div style="display: flex; align-items: center;">
+    <button mat-button routerLink="/" class="button-anim">
       <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
     </button>
-      <div style="flex: 1;">
-        <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
-        <mat-menu #dashboardMenu="matMenu">
-          <button mat-menu-item routerLink="/analytics">Analytics</button>
-          <button mat-menu-item routerLink="/matches">Matches</button>
-          <button mat-menu-item routerLink="/players">Players</button>
-          <button mat-menu-item routerLink="/club">Clubs</button>
-        </mat-menu>
-        <button mat-button routerLink="/account" class="button-anim">Account</button>
-        <button mat-button routerLink="/contact" class="button-anim">Contact</button>
-        <button mat-button routerLink="/about" class="button-anim">About Us</button>
-      </div>
+    <div style="flex: 1;">
+      <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon
+          matSuffix>arrow_drop_down</mat-icon></button>
+      <mat-menu #dashboardMenu="matMenu">
+        <button mat-menu-item routerLink="/analytics">Analytics</button>
+        <button mat-menu-item routerLink="/matches">Matches</button>
+        <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/club">Clubs</button>
+      </mat-menu>
+      <button mat-button routerLink="/account" class="button-anim">Account</button>
+      <button mat-button routerLink="/contact" class="button-anim">Contact</button>
+      <button mat-button routerLink="/about" class="button-anim">About Us</button>
     </div>
-  </mat-toolbar>
-
-  <button mat-raised-button id="manchester-united" class="custom-button" (click)="getSquad('985')" routerLink="/club/squad" *ngIf="!(squads$ | async)">
+  </div>
+</mat-toolbar>
+<div class="club-buttons">
+  <button mat-raised-button id="manchester-united" class="custom-button" (click)="getSquad('985')"
+    routerLink="/club/squad">
     <mat-icon svgIcon="manchester-united"></mat-icon>
   </button>
-  
-  <ul *ngIf="squads$ | async as squads" class="squads-container">
-    <li *ngFor="let squad of squads" class="squad-card">
-      <img [src]="squad.heroImage" alt="{{ squad.name }} image">
-      <h3>{{ squad.name }}</h3>
-    </li>
-  </ul>
-  
+  <button mat-raised-button id="manchester-city" class="custom-button" (click)="getSquad('281')"
+    routerLink="/club/squad">
+    <mat-icon svgIcon="manchester-city"></mat-icon>
+  </button>
+  <button mat-raised-button id="arsenal" class="custom-button" (click)="getSquad('11')" routerLink="/club/squad">
+    <mat-icon svgIcon="arsenal"></mat-icon>
+  </button>
+  <button mat-raised-button id="chelsea" class="custom-button" (click)="getSquad('631')" routerLink="/club/squad">
+    <mat-icon svgIcon="chelsea"></mat-icon>
+  </button>
+  <button mat-raised-button id="liverpool" class="custom-button" (click)="getSquad('31')" routerLink="/club/squad">
+    <mat-icon svgIcon="liverpool"></mat-icon>
+  </button>
+  <button mat-raised-button id="tottenham" class="custom-button" (click)="getSquad('148')" routerLink="/club/squad">
+    <mat-icon svgIcon="tottenham"></mat-icon>
+  </button>
+  <button mat-raised-button id="newcastle-united" class="custom-button" (click)="getSquad('762')"
+    routerLink="/club/squad">
+    <mat-icon svgIcon="newcastle-united"></mat-icon>
+  </button>
+  <button mat-raised-button id="westham" class="custom-button" (click)="getSquad('379')" routerLink="/club/squad">
+    <mat-icon svgIcon="westham"></mat-icon>
+  </button>
+  <button mat-raised-button id="leicester-city" class="custom-button" (click)="getSquad('1003')"
+    routerLink="/club/squad">
+    <mat-icon svgIcon="leicester-city"></mat-icon>
+  </button>
+  <button mat-raised-button id="astonvilla" class="custom-button" (click)="getSquad('405')" routerLink="/club/squad">
+    <mat-icon svgIcon="astonvilla"></mat-icon>
+  </button>
+  <button mat-raised-button id="wolves" class="custom-button" (click)="getSquad('543')" routerLink="/club/squad">
+    <mat-icon svgIcon="wolves"></mat-icon>
+  </button>
+  <button mat-raised-button id="southampton" class="custom-button" (click)="getSquad('180')" routerLink="/club/squad">
+    <mat-icon svgIcon="southampton"></mat-icon>
+  </button>
+  <button mat-raised-button id="brighton" class="custom-button" (click)="getSquad('1237')" routerLink="/club/squad">
+    <mat-icon svgIcon="brighton"></mat-icon>
+  </button>
+  <button mat-raised-button id="everton" class="custom-button" (click)="getSquad('29')" routerLink="/club/squad">
+    <mat-icon svgIcon="everton"></mat-icon>
+  </button>
+  <button mat-raised-button id="nottinghamforest" class="custom-button" (click)="getSquad('703')"
+    routerLink="/club/squad">
+    <mat-icon svgIcon="nottinghamforest"></mat-icon>
+  </button>
+  <button mat-raised-button id="brentford" class="custom-button" (click)="getSquad('1148')" routerLink="/club/squad">
+    <mat-icon svgIcon="brentford"></mat-icon>
+  </button>
+  <button mat-raised-button id="leedsunited" class="custom-button" (click)="getSquad('399')" routerLink="/club/squad">
+    <mat-icon svgIcon="leedsunited"></mat-icon>
+  </button>
+  <button mat-raised-button id="crystalpalace" class="custom-button" (click)="getSquad('873')" routerLink="/club/squad">
+    <mat-icon svgIcon="crystalpalace"></mat-icon>
+  </button>
+  <button mat-raised-button id="fulham" class="custom-button" (click)="getSquad('931')" routerLink="/club/squad">
+    <mat-icon svgIcon="fulham"></mat-icon>
+  </button>
+  <button mat-raised-button id="bournemouth" class="custom-button" (click)="getSquad('989')" routerLink="/club/squad">
+    <mat-icon svgIcon="bournemouth"></mat-icon>
+  </button>
+</div>
+
+<ul *ngIf="squads | async as squads" class="squads-container">
+  <li *ngFor="let squad of squads" class="squad-card">
+    <img [src]="squad.heroImage" alt="{{ squad.name }} image">
+    <h3>{{ squad.name }}</h3>
+  </li>
+</ul>

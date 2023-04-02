@@ -22,13 +22,13 @@ public class ClubController {
 
     @Autowired
     private ClubService clubSvc;
-  
+
     @GetMapping(path = "/club/squad")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public List<Club> getSquad (HttpSession sess, @RequestParam String id){
+    public List<Club> getSquad(HttpSession sess, @RequestParam String id) {
         clubSvc.getSquad(id);
-       List<Club> squads = clubSvc.getSquad(id); 
+        List<Club> squads = clubSvc.getSquad(id);
         return squads;
     }
-    
+
 }

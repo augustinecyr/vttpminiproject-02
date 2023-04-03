@@ -8,12 +8,11 @@ import com.sg.backend.repositories.ContactRepository;
 
 @Service
 public class ContactService {
-    
+
     @Autowired
     private ContactRepository conRepo;
 
     public void createNewEntry(Contact contact) {
         conRepo.insert(contact);
     }
-
 }

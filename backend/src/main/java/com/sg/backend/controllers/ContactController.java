@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sg.backend.models.Contact;
 import com.sg.backend.service.ContactService;
+import com.sg.backend.service.EmailService;
 
 @RestController
 @RequestMapping
@@ -21,6 +22,9 @@ public class ContactController {
     
     @Autowired
     private ContactService conSvc;
+
+    @Autowired
+    private EmailService emailSvc;
 
     @PostMapping(path = "/contact", consumes = "multipart/form-data")
     public ResponseEntity<String> postContact(@ModelAttribute Contact form) throws IOException {
@@ -40,6 +44,8 @@ public class ContactController {
         System.out.println(contact);
         conSvc.createNewEntry(contact);
         System.out.println("Form successfully received from Angular, awaiting HTTP 200 Status");
+        // after saving in SQL, dispatch this email
+        emailSvc.sendSimpleMessage(email, title, "Thank you for contacting us, we will reach out to you within 3 working days!");
          return ResponseEntity.ok("");
     }
     

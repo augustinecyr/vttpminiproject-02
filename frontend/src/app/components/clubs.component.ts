@@ -3,6 +3,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ClubService } from '../clubs.service';
 import { Observable } from 'rxjs';
+import { Club } from '../models';
 
 @Component({
   selector: 'app-clubs',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./clubs.component.css']
 })
 export class ClubsComponent {
-  squads: Observable<any[]> | undefined;
+  squads: Observable<Club[]> | undefined;
 
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private clubService: ClubService) {
     this.matIconRegistry.addSvgIcon('manchester-united', this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/manchester-united.svg'));

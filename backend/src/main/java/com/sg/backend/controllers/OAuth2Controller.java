@@ -27,8 +27,10 @@ import com.sg.backend.repositories.OAuth2Repository;
 @RequestMapping
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OAuth2Controller {
+
   @Autowired
   private OAuth2Repository oauth2Repo;
+  
   @Value("${GITHUB_ID}")
   private String GITHUB_ID;
 
@@ -79,7 +81,8 @@ public class OAuth2Controller {
     HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
     ResponseEntity<Map<String, String>> responseEntity = restTemplate.exchange(accessTokenEndpoint, HttpMethod.POST,
-        requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
+        requestEntity, new ParameterizedTypeReference<Map<String, String>>() {
+        });
 
     System.out.println(responseEntity);
 
@@ -100,7 +103,7 @@ public class OAuth2Controller {
   @PostMapping("/token")
   @CrossOrigin(origins = "*", allowedHeaders = "*")
   public Map<String, String> exchangeGoogleCodeForToken(@RequestParam("code") String code) {
-    // Send a POST request to https://oauth2.googleapis.com/token 
+    // Send a POST request to https://oauth2.googleapis.com/token
     // with the authorization code to exchange it for an access token
     System.out.println(code);
     RestTemplate restTemplate = new RestTemplate();
@@ -122,7 +125,8 @@ public class OAuth2Controller {
     HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
     ResponseEntity<Map<String, String>> responseEntity = restTemplate.exchange(accessTokenEndpoint, HttpMethod.POST,
-        requestEntity, new ParameterizedTypeReference<Map<String, String>>() {});
+        requestEntity, new ParameterizedTypeReference<Map<String, String>>() {
+        });
 
     System.out.println(responseEntity);
 

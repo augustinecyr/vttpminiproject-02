@@ -1,16 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Club } from "./models";
 
 @Injectable()
-export class ClubService{
+export class ClubService {
 
-private baseUrl = 'http://localhost:8080';
-
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getSquad(id: string) {
-    const url = `${this.baseUrl}/club/squad?id=${id}`;
+    // {id} value get from the button in html
+    const url = `http://localhost:8080/club/squad?id=${id}`;
     console.log("url:", url)
-    return this.http.get<any[]>(url);
+    return this.http.get<Club[]>(url);
   }
 }

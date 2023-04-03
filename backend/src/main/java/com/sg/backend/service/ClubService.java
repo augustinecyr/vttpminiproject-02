@@ -82,11 +82,12 @@ public class ClubService {
 					try {
 						squads.add(Club.create((JsonObject) v));
 					} catch (Exception ex) {
-						System.err.printf("Error creating club: %s\n", ex.getMessage());
+						System.err.printf("Error: %s\n", ex.getMessage());
 					}
 				}
 			}
 		}
 		return squads;
 	}
+
 }

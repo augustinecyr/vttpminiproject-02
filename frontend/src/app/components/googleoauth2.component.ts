@@ -45,7 +45,7 @@ export class Googleoauth2Component implements OnInit {
           });
         });
       } else {
-        console.log('Code or state parameter is missing');
+        console.log('code parameter is invalid or missing');
       }
     });
   }

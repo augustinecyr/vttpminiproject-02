@@ -1,6 +1,7 @@
 package com.sg.backend.controllers;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ import com.sg.backend.service.EmailService;
 @RequestMapping
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ContactController {
-    
+
     @Autowired
     private ContactService conSvc;
 
@@ -32,8 +33,13 @@ public class ContactController {
         String title = form.getTitle();
         String text = form.getText();
         MultipartFile attachment = form.getAttachment();
-        System.out.println("Received form from Angular - email: " + email + ", title: " + title + ", text: " + text + ", attachment:" + attachment);
+        System.out.println("Received form from Angular - email: " + email + ", title: " + title + ", text: " + text
+                + ", attachment:" + attachment);
         Contact contact = new Contact();
+        // generate a random form ID
+        String id = (UUID.randomUUID().toString().substring(0, 8));
+        System.out.printf("id: %s\n", id);
+        contact.setId(id);
         contact.setEmail(email);
         contact.setTitle(title);
         contact.setText(text);
@@ -45,9 +51,10 @@ public class ContactController {
         conSvc.createNewEntry(contact);
         System.out.println("Form successfully received from Angular, awaiting HTTP 200 Status");
         // after saving in SQL, dispatch this email
-        emailSvc.sendSimpleMessage(email, title, "Thank you for contacting us, we will reach out to you within 3 working days!");
-         return ResponseEntity.ok("");
+        emailSvc.dispatchEmailPostContactForm(email, title,
+                "Thank you for contacting us, Your service request has been successfully submitted with ID number:" + id
+                        + ".\n\nWe will reach out to you within 3 working days!");
+        return ResponseEntity.ok("");
     }
-    
 
 }

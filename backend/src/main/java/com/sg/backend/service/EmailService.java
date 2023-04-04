@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
+  
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendSimpleMessage(
+    public void dispatchEmailPostContactForm(
       String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage(); 
         // set the sender name 

@@ -1,5 +1,7 @@
 package com.sg.backend.models;
 
+import java.util.Arrays;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Contact {
@@ -8,8 +10,18 @@ public class Contact {
     private String text;
     private MultipartFile attachment;
     private byte[] attachmentSQL;
-    
-    public Contact() {}
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Contact() {
+    }
 
     public String getEmail() {
         return email;
@@ -42,15 +54,11 @@ public class Contact {
     public void setAttachment(MultipartFile attachment) {
         this.attachment = attachment;
     }
-    
+
     @Override
     public String toString() {
-        return "Contact{" +
-                "email='" + email + '\'' +
-                ", title='" + title + '\'' +
-                ", text='" + text + '\'' +
-                ", attachment=" + attachment +
-                '}';
+        return "Contact [email=" + email + ", title=" + title + ", text=" + text + ", attachment=" + attachment
+                + ", attachmentSQL=" + Arrays.toString(attachmentSQL) + ", id=" + id + "]";
     }
 
     public byte[] getAttachmentSQL() {

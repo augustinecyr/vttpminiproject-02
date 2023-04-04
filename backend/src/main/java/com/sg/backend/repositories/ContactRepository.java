@@ -14,14 +14,13 @@ public class ContactRepository {
 
     public void insert(Contact contact) {
         Object[] params = new Object[] {
-                null,
+                contact.getId(),
                 contact.getEmail(),
                 contact.getTitle(),
                 contact.getText(),
-                // this is the blob getter 
+                // this is the blob getter for specifically mySQL
                 contact.getAttachmentSQL()
         };
-
         template.update(Queries.SQL_INSERT_CONTACT, params);
     }
 }

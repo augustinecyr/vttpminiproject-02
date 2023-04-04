@@ -7,10 +7,11 @@ use footrix;
 commit;
 
 CREATE TABLE `contact` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` CHAR(8) NOT NULL,
   `email` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `attachment` mediumblob,
+  UNIQUE(`id`),
   PRIMARY KEY (`id`)
 );

@@ -51,7 +51,7 @@ public class ContactController {
         conSvc.createNewEntry(contact);
         System.out.println("Form successfully received from Angular, awaiting HTTP 200 Status");
         // after saving in SQL, dispatch this email
-        emailSvc.dispatchEmailPostContactForm(email, title,
+        emailSvc.dispatchEmailPostContactForm(email, "Footrix Service Request:" + id,
                 "Thank you for contacting us, Your service request has been successfully submitted with ID number:" + id
                         + ".\n\nWe will reach out to you within 3 working days!");
         return ResponseEntity.ok("");

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.sg.backend.models.Club;
+import com.sg.backend.repositories.ClubRepository;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
@@ -22,6 +24,9 @@ import jakarta.json.JsonValue;
 
 @Service
 public class ClubService {
+
+	@Autowired
+	private ClubRepository clubRepo;
 
 	private static final String URL = "https://transfermarket.p.rapidapi.com/clubs/get-squad";
 
@@ -85,6 +90,28 @@ public class ClubService {
 						System.err.printf("Error: %s\n", ex.getMessage());
 					}
 				}
+			}
+			// list down all the individual player names and ids respectively
+			for (Club club : squads) {
+				System.out.println(club.getName() + ": " + club.getId());
+				// to store into mySQL
+				String playerId = club.getId();
+				String playerName = club.getName();
+				Club player = new Club();
+				player.setId(playerId);
+				player.setName(playerName);
+				System.out.println(player);
+				// check the mySQL db for existing IDs before inserting
+				List<String> ids = clubRepo.getPlayerIds();
+				if (ids.contains(player.getId())) {
+					System.out.println("Player already exists in database.");
+					System.out.println("-------------------------------");
+					System.out.println("Loading the squad");
+					// return squads so it will not be blank on view
+					return squads;
+				}
+				// insert only if id doesnt exist
+				clubRepo.insert(player);
 			}
 		}
 		return squads;

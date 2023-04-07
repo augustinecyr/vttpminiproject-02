@@ -15,3 +15,10 @@ CREATE TABLE `contact` (
   UNIQUE(`id`),
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `club_player` (
+  `id` CHAR(8) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  UNIQUE(`id`),
+  PRIMARY KEY (`id`)
+);

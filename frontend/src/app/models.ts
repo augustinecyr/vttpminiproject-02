@@ -19,10 +19,6 @@ export interface Contact {
     attachment: File;
 }
 
-export interface FormResponse {
-	formId: string;
-}
-
 export interface Club {
     name: string;
     id: string;

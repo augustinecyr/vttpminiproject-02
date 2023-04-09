@@ -22,3 +22,18 @@ CREATE TABLE `club_player` (
   UNIQUE(`id`),
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `player_stats` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `club_player_id` CHAR(8) NOT NULL,
+  `goals` INT,
+  `assists` INT,
+  `yellowCards` INT,
+  `redCards` INT,
+  `cleanSheets` INT,
+  `concededGoals` INT,
+  `isGoalkeeper` BOOLEAN,
+  UNIQUE(`id`),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`club_player_id`) REFERENCES `club_player`(`id`)
+);

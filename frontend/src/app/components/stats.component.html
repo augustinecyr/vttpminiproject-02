@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="black-toolbar">
+    <div style="display: flex; align-items: center;">
+        <button mat-button routerLink="/" class="button-anim">
+            <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
+        </button>
+        <div style="flex: 1;">
+            <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard
+                <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+            <mat-menu #dashboardMenu="matMenu">
+                <button mat-menu-item routerLink="/analytics">Analytics</button>
+                <button mat-menu-item routerLink="/matches">Matches</button>
+                <button mat-menu-item routerLink="/players">Players</button>
+                <button mat-menu-item routerLink="/club">Clubs</button>
+            </mat-menu>
+            <button mat-button routerLink="/account" class="button-anim">Account</button>
+            <button mat-button routerLink="/contact" class="button-anim">Contact</button>
+            <button mat-button routerLink="/about" class="button-anim">About Us</button>
+        </div>
+    </div>
+</mat-toolbar>
+
+<table class="player-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of playerSQL | async">
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+        </tr>
+    </tbody>
+</table>

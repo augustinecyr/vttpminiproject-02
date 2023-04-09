@@ -24,3 +24,23 @@ export interface Club {
     id: string;
     heroImage: string;
 }
+
+export interface Stats {
+    ownGoals: string;
+    yellowCards: string;
+    redCards: string;
+    minutesPlayed: string;
+    matches: string;
+    goals: string;
+    assists: string;
+    // clean sheet = toNil
+    // will need to hide this stats if player is not a goalkeeper
+    toNil: string;
+    concededGoals : string;
+    isGoalkeeper : boolean;
+}
+
+export interface PlayerSQL {
+    id: string;
+    name: string;
+}

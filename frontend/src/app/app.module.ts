@@ -24,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ClubsComponent } from './components/clubs.component';
 import { ClubService } from './clubs.service';
+import { StatsService } from './stats.service';
+import { StatsComponent } from './components/stats.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -35,6 +37,8 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'club', component: ClubsComponent },
   { path: 'club/squad', component: ClubsComponent },
+  { path: 'players/stats', component: StatsComponent},
+  { path: 'players', component: StatsComponent},
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -48,6 +52,7 @@ const appRoutes: Routes = [
     Googleoauth2Component,
     ContactComponent,
     ClubsComponent,
+    StatsComponent,
   ],
   imports: [
     FormsModule,
@@ -67,7 +72,7 @@ const appRoutes: Routes = [
     MatFormFieldModule
     
   ],
-  providers: [UserService,ContactService,ClubService],
+  providers: [UserService,ContactService,ClubService,StatsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

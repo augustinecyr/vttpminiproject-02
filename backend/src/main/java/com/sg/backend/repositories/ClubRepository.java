@@ -1,12 +1,16 @@
 package com.sg.backend.repositories;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.sg.backend.models.Club;
+import com.sg.backend.models.PlayerSQL;
 
 @Repository
 public class ClubRepository {
@@ -37,5 +41,17 @@ public class ClubRepository {
 
         List<String> ids = template.queryForList(Queries.SQL_ID_CLUB_PLAYER, String.class);
         return ids;
+    }
+
+    public List<PlayerSQL> getPlayerList() {
+        List<PlayerSQL> players = template.query(Queries.SQL_VIEW_ALL_CLUB_PLAYER, new RowMapper<PlayerSQL>() {
+            public PlayerSQL mapRow(ResultSet rs, int rowNum) throws SQLException {
+                PlayerSQL player = new PlayerSQL();
+                player.setId(rs.getString("id"));
+                player.setName(rs.getString("name"));
+                return player;
+            }
+        });
+        return players;
     }
 }

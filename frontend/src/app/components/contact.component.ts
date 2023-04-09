@@ -2,22 +2,23 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../contact.service';
 import { Contact } from '../models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+	selector: 'app-contact',
+	templateUrl: './contact.component.html',
+	styleUrls: ['./contact.component.css']
 })
 
 export class ContactComponent {
 
-  @ViewChild('attachment')
+	@ViewChild('attachment')
 	attachment!: ElementRef
 
 	form!: FormGroup
 
-	constructor(private fb: FormBuilder, private postSvc: ContactService) { }
+	constructor(private fb: FormBuilder, private postSvc: ContactService, private snackBar: MatSnackBar) { }
 
 	ngOnInit(): void {
 		this.form = this.createForm()
@@ -37,13 +38,16 @@ export class ContactComponent {
 				console.error('error: ', error)
 			})
 		console.info('form sent to backend')
+		this.snackBar.open('Thank you for contacting us, please check your email!', 'X', {
+			duration: 5000
+		});
 	}
 
 	createForm(): FormGroup {
 		return this.fb.group({
-			email: this.fb.control('', [ Validators.required, Validators.email ]),
-			title: this.fb.control('', [ Validators.required ]),
-			text: this.fb.control('', [ Validators.required, Validators.minLength(2) ]),
+			email: this.fb.control('', [Validators.required, Validators.email]),
+			title: this.fb.control('', [Validators.required]),
+			text: this.fb.control('', [Validators.required, Validators.minLength(2)]),
 			attachment: this.fb.control('')
 		})
 	}

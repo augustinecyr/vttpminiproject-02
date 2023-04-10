@@ -26,6 +26,10 @@ import { ClubsComponent } from './components/clubs.component';
 import { ClubService } from './clubs.service';
 import { StatsService } from './stats.service';
 import { StatsComponent } from './components/stats.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -69,8 +73,11 @@ const appRoutes: Routes = [
     MatExpansionModule,
     MatMenuModule,
     MatInputModule,
-    MatFormFieldModule
-    
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatDividerModule,
+    MatListModule,
   ],
   providers: [UserService,ContactService,ClubService,StatsService],
   bootstrap: [AppComponent]

@@ -29,15 +29,14 @@ export interface Stats {
     ownGoals: string;
     yellowCards: string;
     redCards: string;
-    minutesPlayed: string;
     matches: string;
     goals: string;
     assists: string;
     // clean sheet = toNil
     // will need to hide this stats if player is not a goalkeeper
-    toNil: string;
+    cleanSheets: string;
     concededGoals : string;
-    isGoalkeeper : boolean;
+    goalkeeper : boolean;
 }
 
 export interface PlayerSQL {

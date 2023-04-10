@@ -1,81 +1,95 @@
 /* Toolbar */
 .black-toolbar {
-    background-color: #716b6b;
-    position: relative;
-  }
-  
-  .black-toolbar::before,
-  .black-toolbar::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background-color: inherit;
-    z-index: -1;
-  }
-  
-  .black-toolbar::before {
-    left: 0;
-    border-radius: 10px 0 0 10px;
-  }
-  
-  .black-toolbar::after {
-    right: 0;
-    border-radius: 0 10px 10px 0;
-  }
-  
-  .logo {
-    height: 50px;
-    margin-right: 20px;
-    z-index: 9999;
-  }
-  
-  .button-anim {
-    transition: transform 0.3s;
-  }
-  
-  .button-anim:hover {
-    transform: translateY(-3px);
-  }
-  
-  .mat-menu-panel {
-    background-color: #424242;
-  }
-  
-  .mat-menu-item:hover {
-    background-color: #757575;
-  }
-  
-  .mat-menu-trigger:hover {
-    cursor: pointer;
-  }
-  
-  
-  .button-anim span {
-      position: relative;
-      z-index: 1;
-  }
-  /* Player list */
-  .player-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .player-table th,
-  .player-table td {
-    padding: 8px;
-    text-align: left;
-    font-size: 14px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .player-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  .player-table tr:hover {
-    background-color: #f5f5f5;
-  }
-  
+  background-color: #716b6b;
+  position: relative;
+}
+
+.black-toolbar::before,
+.black-toolbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: inherit;
+  z-index: -1;
+}
+
+.black-toolbar::before {
+  left: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+.black-toolbar::after {
+  right: 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 20px;
+  z-index: 9999;
+}
+
+.button-anim {
+  transition: transform 0.3s;
+}
+
+.button-anim:hover {
+  transform: translateY(-3px);
+}
+
+.mat-menu-panel {
+  background-color: #424242;
+}
+
+.mat-menu-item:hover {
+  background-color: #757575;
+}
+
+.mat-menu-trigger:hover {
+  cursor: pointer;
+}
+
+
+.button-anim span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Player list */
+.player-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.player-table th,
+.player-table td {
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.player-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.player-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-container,
+.player-container {
+  flex: 1;
+  margin-right: 20px;
+  height: 920px; 
+  overflow-y: scroll;
+
+}

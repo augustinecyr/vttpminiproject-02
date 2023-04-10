@@ -19,7 +19,14 @@ export class StatsComponent {
   }
 
   getListFromSQL() {
-    console.log("fetching from list of players from MySQL")
+    console.log("fetching the list of players from MySQL")
     this.playerSQL = this.statService.getListFromSQL();
   }
+
+  getStats(id: string){
+    console.log("getting stats for this player", id)
+    this.stats = this.statService.getStats(id);
+    this.stats.subscribe(response => console.log("Stats:",response));
+  }
+  
 }

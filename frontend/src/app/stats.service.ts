@@ -8,7 +8,7 @@ export class StatsService {
     constructor(private http: HttpClient) { }
 
     getStats(id: String) {
-        const url = `http://localhost:8080/player/stats?id=${id}`;
+        const url = `http://localhost:8080/players/stats?id=${id}`;
         console.log("url", url)
         return this.http.get<Stats[]>(url);
     }

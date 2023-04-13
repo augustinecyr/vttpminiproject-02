@@ -14,6 +14,8 @@ public class Stats {
     private int cleanSheets;
     private int concededGoals;
     private boolean isGoalkeeper;
+    private int clubPlayerId;
+    
 
     public int getYellowCards() {
         return yellowCards;
@@ -85,8 +87,9 @@ public class Stats {
     
 
     public static Stats create(int yellowCards, int redCards, int goals, int assists, int cleanSheets,
-            int concededGoals, boolean isGoalkeeper) {
+            int concededGoals, boolean isGoalkeeper, int clubPlayerId) {
         final Stats stat = new Stats();
+        stat.setClubPlayerId(clubPlayerId);
         stat.setYellowCards(yellowCards);
         stat.setRedCards(redCards);
         stat.setGoals(goals);
@@ -109,6 +112,14 @@ public class Stats {
         return "Stats [yellowCards=" + yellowCards + ", redCards=" + redCards + ", goals=" + goals + ", assists="
                 + assists + ", cleanSheets=" + cleanSheets + ", concededGoals=" + concededGoals + ", isGoalkeeper="
                 + isGoalkeeper + "]";
+    }
+
+    public int getClubPlayerId() {
+        return clubPlayerId;
+    }
+
+    public void setClubPlayerId(int clubPlayerId) {
+        this.clubPlayerId = clubPlayerId;
     }
 
 }

@@ -1,73 +1,92 @@
 <mat-toolbar color="primary" class="black-toolbar">
-    <div style="display: flex; align-items: center;">
-        <button mat-button routerLink="/" class="button-anim">
-            <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
-        </button>
-        <div style="flex: 1;">
-            <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard
-                <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
-            <mat-menu #dashboardMenu="matMenu">
-                <button mat-menu-item routerLink="/players">Players</button>
-                <button mat-menu-item routerLink="/club">Clubs</button>
-            </mat-menu>
-            <button mat-button routerLink="/account" class="button-anim">Account</button>
-            <button mat-button routerLink="/contact" class="button-anim">Contact</button>
-            <button mat-button routerLink="/about" class="button-anim">About Us</button>
-        </div>
+  <div style="display: flex; align-items: center">
+    <button mat-button routerLink="/" class="button-anim">
+      <img
+        src="../../assets/premier-league.svg"
+        alt="Logo"
+        style="height: 50px; margin-right: 20px"
+      />
+    </button>
+    <div style="flex: 1">
+      <button
+        mat-button
+        [matMenuTriggerFor]="dashboardMenu"
+        matMenuTriggerHover
+        class="button-anim"
+      >
+        Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #dashboardMenu="matMenu">
+        <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/club">Clubs</button>
+      </mat-menu>
+      <button mat-button routerLink="/account" class="button-anim">
+        Account
+      </button>
+      <button mat-button routerLink="/contact" class="button-anim">
+        Contact
+      </button>
+      <button mat-button routerLink="/about" class="button-anim">
+        About Us
+      </button>
     </div>
+  </div>
 </mat-toolbar>
 
 <div class="container">
-    <div class="player-container">
-        <table class="player-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let p of playerSQL | async">
-                    <td>{{ p.id }}</td>
-                    <td>{{ p.name }}</td>
-                    <td>
-                        <button mat-raised-button routerLink="/players/stats" color="primary"
-                            (click)="getStats(p.id)">View Stats</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="player-container">
+    <table class="player-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of playerSQL | async">
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>
+            <button
+              mat-raised-button
+              routerLink="/players/stats"
+              color="primary"
+              (click)="getStats(p.id)"
+            >
+              View Stats
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stats-container">
+    <div *ngIf="stats">
+      <h2>Stats</h2>
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Yellow Cards</th>
+            <th>Red Cards</th>
+            
+            <th>Clean Sheets</th>
+            <th>Conceded Goals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of stats | async">
+            <td style="color:green">{{ s.goals }}</td>
+            <td style="color:orange">{{ s.assists }}</td>
+            <td style="color:yellow">{{ s.yellowCards }}</td>
+            <td style="color:red">{{ s.redCards }}</td>
+            <td>{{ s.cleanSheets }}</td>
+            <td>{{ s.concededGoals }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="stats-container">
-        <div *ngIf="stats">
-            <h2>Stats</h2>
-            <table class="stats-table">
-                <thead>
-                    <tr>
-                        <th>Goals</th>
-                        <th>Assists</th>
-                        <th>Yellow Cards</th>
-                        <th>Red Cards</th>
-                        <th>Goalkeeper</th>
-                        <th>Clean Sheets</th>
-                        <th>Conceded Goals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let s of stats | async">
-                        <td>{{ s.goals }}</td>
-                        <td>{{ s.assists }}</td>
-                        <td>{{ s.yellowCards }}</td>
-                        <td>{{ s.redCards }}</td>
-                        <td>{{ s.goalkeeper }}</td>
-                        <td>{{ s.cleanSheets }}</td>
-                        <td>{{ s.concededGoals }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
+  </div>
 </div>

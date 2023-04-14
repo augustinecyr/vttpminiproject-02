@@ -8,28 +8,32 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-oauth2',
   templateUrl: './githuboauth2.component.html',
-  styleUrls: ['./githuboauth2.component.css']
+  styleUrls: ['./githuboauth2.component.css'],
 })
 export class GithubOauth2Component implements OnInit {
-  
   code!: string;
   state!: string;
   accessToken!: string;
   userData!: UserData;
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.code = params['code'];
       console.log(this.code);
       if (this.code) {
-        this.getToken(this.code).subscribe(response => {
+        this.userService.getGithubToken(this.code).subscribe((response) => {
           console.log('Response:', response);
           this.accessToken = response.access_token;
           console.log('Access token:', this.accessToken);
           // post the token using getUser
-          this.getUser(this.accessToken).subscribe(user => {
+          this.userService.getGithubUser(this.accessToken).subscribe((user) => {
             console.log('User:', user);
             this.userData = {
               login: user.login,
@@ -53,28 +57,4 @@ export class GithubOauth2Component implements OnInit {
       }
     });
   }
-
-  getToken(code: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      Accept: 'application/json'
-    });
-
-    const params = new HttpParams()
-      .set('code', code);
-    console.log(params);
-
-    return this.http.post<any>('http://localhost:8080/login/oauth/access_token', params, { headers });
-  }
-
-  getUser(accessToken: string): Observable<UserData> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${accessToken}`,
-      Accept: 'application/json'
-    });
-
-    return this.http.get<UserData>('https://api.github.com/user', { headers });
-  }
-
-  
 }

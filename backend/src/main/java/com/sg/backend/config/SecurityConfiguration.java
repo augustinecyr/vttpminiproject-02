@@ -18,7 +18,7 @@ public class SecurityConfiguration {
         http.cors().and().csrf().disable().antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/login", "/error", "/auth/google/callback",
-                        "/login/oauth2/code/github","/login/oauth/access_token","/login/oauth/access_token?code=", "/token", "/contact","/club/squad","/players","/players/stats")
+                        "/login/oauth2/code/github","/login/oauth/access_token","/login/oauth/access_token?code=", "/token", "/contact","/clubs/squad","/players","/players/stats")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -1,41 +1,62 @@
 <mat-toolbar color="primary" class="black-toolbar">
-  <div style="display: flex; align-items: center;">
+  <div style="display: flex; align-items: center">
     <button mat-button routerLink="/" class="button-anim">
-    <img src="../../assets/premier-league.svg" alt="Logo" style="height: 50px; margin-right: 20px;">
-  </button>
-    <div style="flex: 1;">
-      <button mat-button [matMenuTriggerFor]="dashboardMenu" matMenuTriggerHover class="button-anim">Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon></button>
+      <img
+        src="../../assets/premier-league.svg"
+        alt="Logo"
+        style="height: 50px; margin-right: 20px"
+      />
+    </button>
+    <div style="flex: 1">
+      <button
+        mat-button
+        [matMenuTriggerFor]="dashboardMenu"
+        matMenuTriggerHover
+        class="button-anim"
+      >
+        Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon>
+      </button>
       <mat-menu #dashboardMenu="matMenu">
         <button mat-menu-item routerLink="/players">Players</button>
-        <button mat-menu-item routerLink="/club">Clubs</button>
+        <button mat-menu-item routerLink="/clubs">Clubs</button>
       </mat-menu>
-      <button mat-button routerLink="/account" class="button-anim">Account</button>
-      <button mat-button routerLink="/contact" class="button-anim">Contact</button>
-      <button mat-button routerLink="/about" class="button-anim">About Us</button>
+      <button mat-button routerLink="/account" class="button-anim">
+        Account
+      </button>
+      <button mat-button routerLink="/contact" class="button-anim">
+        Contact
+      </button>
+      <button mat-button routerLink="/about" class="button-anim">
+        About Us
+      </button>
     </div>
   </div>
 </mat-toolbar>
 
-<div class="dashboard-container">
- 
-
-  <mat-card class="dashboard-card">
-    <mat-card-header>
-      <mat-card-title>Player Stats</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>View the stats of your team's players.</p>
-      <button mat-button color="accent" routerLink="/players/stats">View Player Stats</button>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="dashboard-card">
-    <mat-card-header>
-      <mat-card-title>Clubs</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>View the squads of all the clubs.</p>
-      <button mat-button color="accent" routerLink="/club">View Squads</button>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-grid-list cols="2">
+  <mat-grid-tile fxFlex="50%" fxLayoutAlign="center center">
+    <div class="image-container">
+      <img src="../../assets/argentina.jpg" />
+      <div class="overlay">
+        <h2>Explore Club Squads</h2>
+        <p>
+          Discover the latest squad rosters of your favorite football clubs.
+        </p>
+        <button mat-raised-button routerLink="/clubs" class="button-slice" >Explore</button>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile fxFlex="50%" fxLayoutAlign="center center">
+    <div class="image-container">
+      <img src="../../assets/ronaldo.jpg" />
+      <div class="overlay">
+        <h2>View Player Statistics</h2>
+        <p>
+          Get detailed statistics on your favorite football players, including
+          goals scored, assists, and more.
+        </p>
+        <button mat-raised-button  routerLink="/players" class="button-slice">View Stats</button>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

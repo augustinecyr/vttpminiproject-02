@@ -61,12 +61,13 @@
 .custom-card {
   background-color: #f5f5f5;
   color: #000000;
+  opacity: 0.95;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 5px;
   border-radius: 30px;
   height: 40%;
   max-width: 500px;
-  margin: 25px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,4 +115,12 @@
 
 a {
   color: rgb(42, 117, 215);
+}
+
+.background-container {
+  position: relative;
+  background-image: url('../../assets/eplball.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 95vh;
 }

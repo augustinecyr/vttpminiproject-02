@@ -30,7 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
@@ -39,10 +39,10 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'club', component: ClubsComponent },
-  { path: 'club/squad', component: ClubsComponent },
-  { path: 'players/stats', component: StatsComponent},
-  { path: 'players', component: StatsComponent},
+  { path: 'clubs', component: ClubsComponent },
+  { path: 'clubs/squad', component: ClubsComponent },
+  { path: 'players/stats', component: StatsComponent },
+  { path: 'players', component: StatsComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -78,8 +78,9 @@ const appRoutes: Routes = [
     MatTableModule,
     MatDividerModule,
     MatListModule,
+    MatGridListModule,
   ],
-  providers: [UserService,ContactService,ClubService,StatsService],
-  bootstrap: [AppComponent]
+  providers: [UserService, ContactService, ClubService, StatsService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

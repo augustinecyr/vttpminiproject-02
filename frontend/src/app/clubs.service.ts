@@ -9,7 +9,7 @@ export class ClubService {
 
   getSquad(id: string) {
     // {id} value get from the button in html
-    const url = `http://localhost:8080/club/squad?id=${id}`;
+    const url = `http://localhost:8080/clubs/squad?id=${id}`;
     console.log("url:", url)
     return this.http.get<Club[]>(url);
   }

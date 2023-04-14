@@ -53,23 +53,29 @@
 
 
 .button-anim span {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
+
 /* Social sign in box */
 .custom-card {
-  background-color: #f5f5f5;
+  background-color: #dfdfdf;
+  opacity: 0.8;
   color: #090909;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 5px;
   border-radius: 5px;
   height: 40%;
   max-width: 500px;
-  margin: 0 auto 0px auto;
+  margin:  0px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .custom-content {
@@ -79,23 +85,30 @@
   justify-content: center;
 }
 
-  .custom-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 32px;
-  }
-  
-  .custom-button {
-    background-color: #3d4449;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    height: 50px;
-    min-width: 180px;
-    margin-top: 25px;
-  }
-  
-  .custom-button mat-icon {
-    margin-right: 5px;
-  }
-  
+.custom-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.custom-button {
+  background-color: #3d4449;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  min-width: 180px;
+  margin-top: 25px;
+}
+
+.custom-button mat-icon {
+  margin-right: 5px;
+}
+
+.background-container {
+  position: relative;
+  background-image: url('../../assets/italy.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 93.5vh;
+}

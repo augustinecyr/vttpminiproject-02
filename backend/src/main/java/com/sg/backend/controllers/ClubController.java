@@ -23,7 +23,7 @@ public class ClubController {
     @Autowired
     private ClubService clubSvc;
 
-    @GetMapping(path = "/club/squad")
+    @GetMapping(path = "/clubs/squad")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public List<Club> getSquad(HttpSession sess, @RequestParam String id) {
         clubSvc.getSquad(id);

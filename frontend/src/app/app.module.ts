@@ -31,6 +31,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { AboutusComponent } from './components/aboutus.component';
+import { MapService } from './map.service';
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
   { path: 'clubs/squad', component: ClubsComponent },
   { path: 'players/stats', component: StatsComponent },
   { path: 'players', component: StatsComponent },
+  { path: 'about', component: AboutusComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -57,6 +60,7 @@ const appRoutes: Routes = [
     ContactComponent,
     ClubsComponent,
     StatsComponent,
+    AboutusComponent,
   ],
   imports: [
     FormsModule,
@@ -80,7 +84,13 @@ const appRoutes: Routes = [
     MatListModule,
     MatGridListModule,
   ],
-  providers: [UserService, ContactService, ClubService, StatsService],
+  providers: [
+    UserService,
+    ContactService,
+    ClubService,
+    StatsService,
+    MapService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

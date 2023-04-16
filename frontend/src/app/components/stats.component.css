@@ -93,7 +93,7 @@
 
 }
 
-.stats-container{
+.stats-container {
   flex: 1;
   margin-right: 20px;
   height: 920px;
@@ -122,8 +122,4 @@
 
 .stats-table tr:nth-child(even) {
   background-color: #f2f2f2;
-}
-
-.stats-table tr:hover {
-  background-color: #ddd;
 }

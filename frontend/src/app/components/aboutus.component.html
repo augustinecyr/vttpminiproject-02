@@ -1,0 +1,73 @@
+<mat-toolbar color="primary" class="black-toolbar">
+  <div style="display: flex; align-items: center">
+    <button mat-button routerLink="/" class="button-anim">
+      <img
+        src="../../assets/premier-league.svg"
+        alt="Logo"
+        style="height: 50px; margin-right: 20px"
+      />
+    </button>
+    <div style="flex: 1">
+      <button
+        mat-button
+        [matMenuTriggerFor]="dashboardMenu"
+        matMenuTriggerHover
+        class="button-anim"
+      >
+        Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #dashboardMenu="matMenu">
+        <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/clubs">Clubs</button>
+      </mat-menu>
+      <button mat-button routerLink="/account" class="button-anim">
+        Account
+      </button>
+      <button mat-button routerLink="/contact" class="button-anim">
+        Contact
+      </button>
+      <button mat-button routerLink="/about" class="button-anim">
+        About Us
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+<!-- About Us -->
+
+<div class="about-us-container">
+  <mat-card class="about-us-card">
+    <div class="about-us-card-header">
+      <mat-icon class="about-us-card-header-icon">info_outline</mat-icon>
+      <div class="about-us-card-header-title">About Us</div>
+    </div>
+    <div class="about-us-card-content">
+      This tool is designed specifically for our analysts, providing them with
+      the insights they need to make informed decisions that impact the success
+      of the Premier League. Our team is dedicated to continuously improving the
+      tool and adding new features to ensure that it remains a valuable asset to
+      the league.
+    </div>
+    <div class="about-us-card-actions">
+      <button
+        mat-raised-button
+        class="about-us-card-actions-button"
+        routerLink="/contact"
+      >
+        Contact Us
+      </button>
+    </div>
+  </mat-card>
+  <!-- Google Map -->
+  <mat-card class="map-card">
+    <div class="map-container">
+      <iframe
+        [src]="mapsUrl"
+        width="600"
+        height="450"
+        style="border: 0"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </mat-card>
+</div>

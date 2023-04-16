@@ -125,13 +125,6 @@
   background-color: #a41c27;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .form {
   display: flex;
   flex-direction: column;

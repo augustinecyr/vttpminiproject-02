@@ -19,7 +19,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers("/login", "/error", "/auth/google/callback",
                         "/login/oauth2/code/github", "/login/oauth/access_token", "/login/oauth/access_token?code=",
-                        "/token", "/contact", "/clubs/squad", "/players", "/players/stats", "/googlemap")
+                        "/token", "/contact", "/clubs/squad", "/players", "/players/stats", "/googlemap" ,"/players/delete")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

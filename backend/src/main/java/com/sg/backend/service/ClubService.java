@@ -108,7 +108,7 @@ public class ClubService {
 					System.out.println("-------------------------------");
 					System.out.println("Loading the squad");
 					// return squads so it will not be blank on view
-					return squads;
+					continue;
 				}
 				// insert only if id doesnt exist
 				clubRepo.insert(player);

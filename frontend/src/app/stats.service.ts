@@ -18,4 +18,10 @@ export class StatsService {
         console.log("url", url)
         return this.http.get<PlayerSQL[]>(url);
     }
+
+    deletePlayerById(id: String) {
+        const url = `http://localhost:8080/players/delete?id=${id}`;
+        console.log("url", url)
+        return this.http.delete<PlayerSQL[]>(url);
+    }
 }

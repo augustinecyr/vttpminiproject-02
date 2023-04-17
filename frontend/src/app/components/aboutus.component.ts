@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -7,7 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './aboutus.component.html',
   styleUrls: ['./aboutus.component.css'],
 })
-export class AboutusComponent {
+export class AboutusComponent implements OnInit {
   mapsUrl: SafeResourceUrl | undefined;
 
   constructor(

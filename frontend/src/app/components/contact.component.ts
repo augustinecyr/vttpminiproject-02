@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../contact.service';
 import { Contact } from '../models';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 	styleUrls: ['./contact.component.css']
 })
 
-export class ContactComponent {
+export class ContactComponent implements OnInit{
 
 	@ViewChild('attachment')
 	attachment!: ElementRef

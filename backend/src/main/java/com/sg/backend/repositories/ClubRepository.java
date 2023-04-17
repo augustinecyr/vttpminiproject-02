@@ -20,14 +20,15 @@ public class ClubRepository {
 
     public void insert(Club player) {
         /*
-        // check for existing entries
-        // shifted this logic into a new method and @ClubService
-        List<String> ids = template.queryForList(Queries.SQL_ID_CLUB_PLAYER, String.class);
-        if (ids.contains(player.getId())) {
-            System.out.println("Player ID already exists in database.");
-            return;
-        } 
-        */
+         * // check for existing entries
+         * // shifted this logic into a new method and @ClubService
+         * List<String> ids = template.queryForList(Queries.SQL_ID_CLUB_PLAYER,
+         * String.class);
+         * if (ids.contains(player.getId())) {
+         * System.out.println("Player ID already exists in database.");
+         * return;
+         * }
+         */
 
         Object[] params = new Object[] {
                 player.getId(),
@@ -35,7 +36,7 @@ public class ClubRepository {
         };
         template.update(Queries.SQL_INSERT_CLUB_PLAYER, params);
     }
-    
+
     // return list of IDs in mySQL
     public List<String> getPlayerIds() {
 
@@ -53,5 +54,12 @@ public class ClubRepository {
             }
         });
         return players;
+    }
+
+    // delete by records by id
+    public void deletePlayerById(String id) {
+        // must delete any record that references PK first
+        template.update(Queries.SQL_DELETE_PLAYER_STATS_BY_PLAYERID, id);
+        template.update(Queries.SQL_DELETE_CLUB_PLAYER_BY_ID, id);
     }
 }

@@ -41,6 +41,7 @@
           <th>ID</th>
           <th>Name</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +56,16 @@
               (click)="getStats(p.id)"
             >
               View Stats
+            </button>
+          </td>
+          <td>
+            <button
+              mat-raised-button
+              routerLink="/players/stats"
+              color="warn"
+              (click)="deletePlayerById(p.id)"
+            >
+              Delete Record
             </button>
           </td>
         </tr>

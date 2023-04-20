@@ -30,7 +30,7 @@ public class OAuth2Controller {
 
   @Autowired
   private OAuth2Repository oauth2Repo;
-  
+
   @Value("${GITHUB_ID}")
   private String GITHUB_ID;
 
@@ -47,7 +47,8 @@ public class OAuth2Controller {
   @CrossOrigin(origins = "*", allowedHeaders = "*")
   public String handleGoogleCallback(@AuthenticationPrincipal OAuth2User principal) {
 
-    return "redirect:http://localhost:4200/token";
+    // return "redirect:http://localhost:4200/token";
+    return "redirect:https://vttpminiproject-02.vercel.app/token";
 
   }
 
@@ -55,7 +56,9 @@ public class OAuth2Controller {
   @CrossOrigin(origins = "*", allowedHeaders = "*")
   public String handleGithubCallback(@AuthenticationPrincipal OAuth2User principal) {
 
-    return "redirect:http://localhost:4200/login/oauth/access_token";
+    // return "redirect:http://localhost:4200/login/oauth/access_token";
+    return "redirect:https://vttpminiproject-02.vercel.app/login/oauth/access_token";
+
   }
 
   @PostMapping("/login/oauth/access_token")
@@ -117,7 +120,8 @@ public class OAuth2Controller {
         .queryParam("client_secret", GOOGLE_SECRET)
         .queryParam("code", code)
         .queryParam("grant_type", "authorization_code")
-        .queryParam("redirect_uri", "http://localhost:4200/token")
+       // .queryParam("redirect_uri", "http://localhost:4200/token")
+       .queryParam("redirect_uri", "https://vttpminiproject-02.vercel.app/token")
         .toUriString();
 
     System.out.println(accessTokenEndpoint);

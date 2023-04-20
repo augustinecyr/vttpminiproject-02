@@ -48,9 +48,9 @@ export class UserService {
     const params = new HttpParams().set('code', code);
     console.log(params);
 
-    return this.http.post<any>('http://localhost:8080/token', params, {
-      headers,
-    });
+   // return this.http.post<any>('http://localhost:8080/token', params, { headers,});
+    return this.http.post<any>('https://vttpminiproject-02-augustine.up.railway.app/token', params, { headers,});
+
   }
   // use the google token and get the email & name
   getGoogleUser(googleToken: string): Observable<GoogleData> {
@@ -75,11 +75,9 @@ export class UserService {
     const params = new HttpParams().set('code', code);
     console.log(params);
 
-    return this.http.post<any>(
-      'http://localhost:8080/login/oauth/access_token',
-      params,
-      { headers }
-    );
+   // return this.http.post<any>('http://localhost:8080/login/oauth/access_token',params,{ headers });
+    return this.http.post<any>('https://vttpminiproject-02-augustine.up.railway.app/login/oauth/access_token',params,{ headers });
+
   }
 
   getGithubUser(accessToken: string): Observable<UserData> {

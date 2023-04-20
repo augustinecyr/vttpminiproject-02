@@ -7,8 +7,7 @@ export class MapService {
 
   // retrieve the url built with api key from backend
   getMapsUrl() {
-    return this.http.get('http://localhost:8080/googlemap', {
-      responseType: 'text',
-    });
+     //  return this.http.get('http://localhost:8080/googlemap', { responseType: 'text', });
+    return this.http.get('https://vttpminiproject-02-augustine.up.railway.app/googlemap', { responseType: 'text', });
   }
 }

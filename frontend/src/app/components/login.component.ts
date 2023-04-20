@@ -15,10 +15,14 @@ export class LoginComponent {
   }
 
   google() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/google'
+   // window.location.href = 'http://localhost:8080/oauth2/authorization/google'
+    window.location.href = 'https://vttpminiproject-02-augustine.up.railway.app/oauth2/authorization/google'
+
   }
 
   github() {
-    window.location.href = 'http://localhost:8080/oauth2/authorization/github'
+ //   window.location.href = 'http://localhost:8080/oauth2/authorization/github'
+  window.location.href = 'https://vttpminiproject-02-augustine.up.railway.app/oauth2/authorization/github'
+
   }
 }

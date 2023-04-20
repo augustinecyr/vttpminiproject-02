@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { GoogleData, PlayerSQL, Stats, UserData } from '../models';
 import { StatsService } from '../stats.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { writeFile } from 'xlsx';
 
 @Component({
   selector: 'app-stats',
@@ -59,5 +60,47 @@ export class StatsComponent implements OnInit {
         console.log('Error deleting player:', error);
       }
     );
+  }
+
+  toExcel() {
+    if (!this.stats) {
+      console.log('No stats available');
+      return;
+    }
+    // create the excel format
+    const columns = [
+      { header: 'Goals', key: 'goals' },
+      { header: 'Assists', key: 'assists' },
+      { header: 'Yellow Cards', key: 'yellowCards' },
+      { header: 'Red Cards', key: 'redCards' },
+      { header: 'Clean Sheets', key: 'cleanSheets' },
+      { header: 'Conceded Goals', key: 'concededGoals' },
+    ];
+
+    this.stats
+      .pipe(
+        map((stats) =>
+          stats.map((s) => ({
+            goals: s.goals,
+            assists: s.assists,
+            yellowCards: s.yellowCards,
+            redCards: s.redCards,
+            cleanSheets: s.cleanSheets,
+            concededGoals: s.concededGoals,
+          }))
+        )
+      )
+      .subscribe((statsArr) => {
+        console.log('Stats:', statsArr);
+        const excelsheet = { columns, rows: statsArr };
+        const excelbook = {
+          Sheets: { data: excelsheet },
+          SheetNames: ['STATS'],
+        };
+
+        const fileName = 'stats.xlsx';
+        writeFile(excelbook, fileName);
+        console.log('Successfully exported excel file');
+      });
   }
 }

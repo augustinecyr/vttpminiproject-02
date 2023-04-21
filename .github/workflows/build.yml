@@ -45,9 +45,10 @@ jobs:
          X_RapidAPI_Key: ${{ secrets.X_RapidAPI_Key }}
          MYSQLPASSWORD: ${{ secrets.MYSQLPASSWORD }}
         working-directory: ./backend
-        run: java -jar target/backend-0.0.1-SNAPSHOT.jar
+        run: java -jar -Dspring.backgroundpreinitializer.ignore=true target/backend-0.0.1-SNAPSHOT.jar
 
       - name: Deploy to Railway
-        run: railway up -d
+        working-directory: ./backend
+        run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

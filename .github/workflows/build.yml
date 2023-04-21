@@ -34,6 +34,16 @@ jobs:
         run: mvn -B package --file backend/pom.xml
 
       - name: Run with the SNAPSHOT.jar
+        env:
+         REDIS_PW: ${{ secrets.REDIS_PW }}
+         GMAIL_PW: ${{ secrets.GMAIL_PW }}
+         GITHUB_SECRET: ${{ secrets.OAUTH2_GITHUB_SECRET }}
+         GITHUB_ID: ${{ secrets.OAUTH2_GITHUB_ID }}
+         GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
+         GOOGLE_ID: ${{ secrets.GOOGLE_ID }}
+         GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+         X_RapidAPI_Key: ${{ secrets.X_RapidAPI_Key }}
+         MYSQLPASSWORD: ${{ secrets.MYSQLPASSWORD }}
         working-directory: ./backend
         run: java -jar target/backend-0.0.1-SNAPSHOT.jar
 

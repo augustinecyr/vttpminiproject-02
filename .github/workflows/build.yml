@@ -49,6 +49,6 @@ jobs:
         
       - name: Deploy to Railway
         working-directory: ./backend
-        run: railway up -- --timeout 500
+        run: railway up -- --timeout 300
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

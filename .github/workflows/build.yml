@@ -21,6 +21,8 @@ jobs:
           java-version: "17"
 
       - name: Maven Build Package
+      env:
+         REDIS_PW: ${{ secrets.REDIS_PW }}
         run: mvn -B package --file backend/pom.xml
       
       - name: Run the Jar file

@@ -29,7 +29,10 @@ jobs:
         uses: actions/checkout@v2
 
         name: Install Railway
-        run: npm i -g @railway/cli
+        run: npm i -g @railway/cli@3.0.8
+
+        name: Link Railway
+        run: railway link --environment production vttpminiproject02-augustine
 
       - name: Deploy to Railway
         env:

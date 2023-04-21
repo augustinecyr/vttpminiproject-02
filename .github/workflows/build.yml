@@ -28,18 +28,13 @@ jobs:
       - name: Checkout latest code
         uses: actions/checkout@v2
 
-        name: Install Railway CLI
-        run: npm i -g @railway/cli@3.0.8
-        
-        name: Login into Railway
-        run: railway login
-        env:
-       RAILWAY_USERNAME: ${{ secrets.RAILWAY_USERNAME }}
-       
-        name: Execute Railway link command
-        run: railway link --environment production vttpminiproject02-augustine
+       - name: Install Railway CLI
+         run: npm i -g @railway/cli@3.0.8
+    
+       - name: Execute Railway link command
+         run: railway link --environment production vttpminiproject02-augustine
 
       - name: Deploy to Railway
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-         run: railway up --build "mvn -B package --file pom.xml" --args "java -jar backend/target/backend-0.0.1-SNAPSHOT.jar"
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --build "mvn -B package --file pom.xml" --args "java -jar backend/target/backend-0.0.1-SNAPSHOT.jar"

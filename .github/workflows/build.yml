@@ -32,10 +32,7 @@ jobs:
          X_RapidAPI_Key: ${{ secrets.X_RapidAPI_Key }}
          MYSQLPASSWORD: ${{ secrets.MYSQLPASSWORD }}
         run: mvn -B package --file backend/pom.xml
-      
-      - name: Run the Jar file
-        run: java -jar backend/target/backend-0.0.1-SNAPSHOT.jar
-
+    
       - name: Deploy to Railway
         run: railway up -d
         env:

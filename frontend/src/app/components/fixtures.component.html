@@ -1,0 +1,107 @@
+<mat-toolbar color="primary" class="black-toolbar">
+  <div style="display: flex; align-items: center">
+    <button mat-button routerLink="/" class="button-anim">
+      <img
+        src="../../assets/premier-league.svg"
+        alt="Logo"
+        style="height: 50px; margin-right: 20px"
+      />
+    </button>
+    <div style="flex: 1">
+      <button
+        mat-button
+        [matMenuTriggerFor]="dashboardMenu"
+        matMenuTriggerHover
+        class="button-anim"
+      >
+        Dashboard <mat-icon matSuffix>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #dashboardMenu="matMenu"
+        ><button mat-menu-item routerLink="/fixtures">Fixtures</button>
+        <button mat-menu-item routerLink="/players">Players</button>
+        <button mat-menu-item routerLink="/clubs">Clubs</button>
+      </mat-menu>
+      <button mat-button routerLink="/account" class="button-anim">
+        Account
+      </button>
+      <button mat-button routerLink="/contact" class="button-anim">
+        Contact
+      </button>
+      <button mat-button routerLink="/about" class="button-anim">
+        About Us
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Choose Matchweek -->
+<div style="display: flex; justify-content: center; align-items: center">
+  <mat-form-field appearance="fill">
+    <mat-label>Matchweek:</mat-label>
+    <mat-select>
+      <mat-option (click)="getFixtures('1')">1</mat-option>
+      <mat-option (click)="getFixtures('2')">2</mat-option>
+      <mat-option (click)="getFixtures('3')">3</mat-option>
+      <mat-option (click)="getFixtures('4')">4</mat-option>
+      <mat-option (click)="getFixtures('5')">5</mat-option>
+      <mat-option (click)="getFixtures('6')">6</mat-option>
+      <mat-option (click)="getFixtures('7')">7</mat-option>
+      <mat-option (click)="getFixtures('8')">8</mat-option>
+      <mat-option (click)="getFixtures('9')">9</mat-option>
+      <mat-option (click)="getFixtures('10')">10</mat-option>
+      <mat-option (click)="getFixtures('11')">11</mat-option>
+      <mat-option (click)="getFixtures('12')">12</mat-option>
+      <mat-option (click)="getFixtures('13')">13</mat-option>
+      <mat-option (click)="getFixtures('14')">14</mat-option>
+      <mat-option (click)="getFixtures('15')">15</mat-option>
+      <mat-option (click)="getFixtures('16')">16</mat-option>
+      <mat-option (click)="getFixtures('17')">17</mat-option>
+      <mat-option (click)="getFixtures('18')">18</mat-option>
+      <mat-option (click)="getFixtures('19')">19</mat-option>
+      <mat-option (click)="getFixtures('20')">20</mat-option>
+      <mat-option (click)="getFixtures('21')">21</mat-option>
+      <mat-option (click)="getFixtures('22')">22</mat-option>
+      <mat-option (click)="getFixtures('23')">23</mat-option>
+      <mat-option (click)="getFixtures('24')">24</mat-option>
+      <mat-option (click)="getFixtures('25')">25</mat-option>
+      <mat-option (click)="getFixtures('26')">26</mat-option>
+      <mat-option (click)="getFixtures('27')">27</mat-option>
+      <mat-option (click)="getFixtures('28')">28</mat-option>
+      <mat-option (click)="getFixtures('29')">29</mat-option>
+      <mat-option (click)="getFixtures('30')">30</mat-option>
+      <mat-option (click)="getFixtures('31')">31</mat-option>
+      <mat-option (click)="getFixtures('32')">32</mat-option>
+      <mat-option (click)="getFixtures('33')">33</mat-option>
+      <mat-option (click)="getFixtures('34')">34</mat-option>
+      <mat-option (click)="getFixtures('35')">35</mat-option>
+      <mat-option (click)="getFixtures('36')">36</mat-option>
+      <mat-option (click)="getFixtures('37')">37</mat-option>
+      <mat-option (click)="getFixtures('38')">38</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<ul *ngIf="fixtures | async as fixtures" class="mat-list">
+  <li *ngFor="let fixture of fixtures" class="mat-list-item mat-elevation-z2">
+    <div class="mat-list-avatar">
+      <img
+        [src]="fixture.homeClubImage"
+        alt="{{ fixture.homeClubName }} logo"
+      />
+      <h3 class="mat-subheader">{{ fixture.homeClubName }}</h3>
+    </div>
+    <div class="mat-list-avatar">
+      <img
+        [src]="fixture.awayClubImage"
+        alt="{{ fixture.awayClubName }} logo"
+      />
+      <h3 class="mat-subheader">{{ fixture.awayClubName }}</h3>
+    </div>
+    <div class="mat-list-text">
+      <h3 class="mat-headline">
+        {{ fixture.fullMatchDate }}, {{ fixture.matchTime }}
+      </h3>
+      <p class="mat-body result">{{ fixture.result }}</p>
+    </div>
+  </li>
+</ul>

@@ -19,7 +19,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers("/login", "/error", "/auth/google/callback",
                         "/login/oauth2/code/github", "/login/oauth/access_token", "/login/oauth/access_token?code=",
-                        "/token", "/contact", "/clubs/squad", "/players", "/players/stats", "/googlemap" ,"/players/delete")
+                        "/token", "/contact", "/clubs/squad", "/players", "/players/stats", "/googlemap" ,"/players/delete","/fixtures","/fixtures/matchweek")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -38,8 +38,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
-        configuration.setAllowedOrigins(Arrays.asList("https://vttpminiproject-02.vercel.app"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200" , "https://vttpminiproject-02.vercel.app" ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("Authorization"));

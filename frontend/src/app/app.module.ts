@@ -33,6 +33,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AboutusComponent } from './components/aboutus.component';
 import { MapService } from './map.service';
+import { FixturesComponent } from './components/fixtures.component';
+import { FixturesService } from './fixtures.service';
+import { MatSelectModule } from '@angular/material/select';
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   // e.g. using :email makes <email> dynamic
@@ -46,6 +49,8 @@ const appRoutes: Routes = [
   { path: 'players/stats', component: StatsComponent },
   { path: 'players', component: StatsComponent },
   { path: 'about', component: AboutusComponent },
+  { path: 'fixtures', component: FixturesComponent },
+  { path: 'fixtures/matchweek', component: FixturesComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
@@ -61,6 +66,7 @@ const appRoutes: Routes = [
     ClubsComponent,
     StatsComponent,
     AboutusComponent,
+    FixturesComponent,
   ],
   imports: [
     FormsModule,
@@ -83,6 +89,7 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatListModule,
     MatGridListModule,
+    MatSelectModule,
   ],
   providers: [
     UserService,
@@ -90,6 +97,7 @@ const appRoutes: Routes = [
     ClubService,
     StatsService,
     MapService,
+    FixturesService,
   ],
   bootstrap: [AppComponent],
 })

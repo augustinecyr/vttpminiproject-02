@@ -1,0 +1,206 @@
+/* Toolbar */
+.black-toolbar {
+    background-color: #716b6b;
+    position: relative;
+}
+
+.black-toolbar::before,
+.black-toolbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: inherit;
+    z-index: -1;
+}
+
+.black-toolbar::before {
+    left: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.black-toolbar::after {
+    right: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 20px;
+    z-index: 9999;
+}
+
+.button-anim {
+    transition: transform 0.3s;
+}
+
+.button-anim:hover {
+    transform: translateY(-3px);
+}
+
+.mat-menu-panel {
+    background-color: #424242;
+}
+
+.mat-menu-item:hover {
+    background-color: #757575;
+}
+
+.mat-menu-trigger:hover {
+    cursor: pointer;
+}
+
+.button-anim span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Select Matchweek */
+.mat-select-trigger {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.mat-select-value {
+    color: #333;
+    font-weight: 600;
+}
+
+
+.mat-option:hover {
+    background-color: #f2f2f2;
+}
+
+
+.mat-option.mat-selected:not(.mat-option-disabled) {
+    background-color: #0077c2;
+    color: #fff;
+}
+
+.mat-select-panel {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 200px;
+    display: none;
+}
+
+.mat-select-panel.ng-animating {
+    display: block;
+}
+
+.mat-select-panel.ng-leave.ng-leave-active {
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.mat-select-panel.ng-leave.ng-leave-active .mat-option {
+    opacity: 0;
+}
+
+.mat-select-panel.ng-leave.ng-leave-active,
+.mat-select-panel.ng-enter {
+    max-height: 0;
+}
+
+.mat-select-panel.ng-enter.ng-enter-active,
+.mat-select-panel.ng-leave.ng-leave-active {
+    max-height: 200px;
+}
+
+.mat-select-panel::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.mat-select-panel::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.mat-select-panel::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+.mat-form-field {
+    border-radius: 10px;
+}
+
+/* Fixtures List */
+.mat-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.mat-list-item:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mat-list-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.mat-subheader {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mat-list-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@media screen and (min-width: 600px) {
+    .mat-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .mat-list-item {
+        width: calc(50% - 32px);
+        max-width: 400px;
+        margin: 16px;
+    }
+}
+
+.mat-body.result {
+    align-self: center;
+    font-size: 24px;
+    font-weight: bold;
+}

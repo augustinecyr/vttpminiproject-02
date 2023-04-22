@@ -43,3 +43,13 @@ export interface PlayerSQL {
     id: string;
     name: string;
 }
+
+export interface Fixtures {
+    fullMatchDate: string;
+    matchTime: string;
+    homeClubName: string;
+    homeClubImage: string;
+    awayClubName: string;
+    awayClubImage: string;
+    result: string;
+}

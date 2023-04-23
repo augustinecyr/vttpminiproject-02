@@ -19,7 +19,7 @@ public class MapController {
     public String getMapsEmbedUrl() {
         // construct the url for the Google Maps Embed API
         // hide API key from frontend
-        String placeId = "ChIJA5LATO4Z2jER111V-v6abAI";
+        String placeId = "ChIJaX_k53Kue0gR_lVE35YOk2w";
         return "https://www.google.com/maps/embed/v1/place?q=place_id:" + placeId + "&key=" + googleMapsKey;
     }
 

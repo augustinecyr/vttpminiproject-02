@@ -34,41 +34,30 @@
   </div>
 </mat-toolbar>
 <!-- About Us -->
-
-<div class="about-us-container">
-  <mat-card class="about-us-card">
-    <div class="about-us-card-header">
-      <mat-icon class="about-us-card-header-icon">info_outline</mat-icon>
-      <div class="about-us-card-header-title">About Us</div>
-    </div>
-    <div class="about-us-card-content">
-      This tool is designed specifically for our analysts, providing them with
-      the insights they need to make informed decisions that impact the success
-      of the Premier League. Our team is dedicated to continuously improving the
-      tool and adding new features to ensure that it remains a valuable asset to
-      the league.
-    </div>
-    <div class="about-us-card-actions">
-      <button
-        mat-raised-button
-        class="about-us-card-actions-button"
-        routerLink="/contact"
-      >
-        Contact Us
-      </button>
-    </div>
-  </mat-card>
+<div class="background-container">
+  <div class="aboutus-container">
+    <mat-card class="aboutus-card">
+      <h2>About Us</h2>
+      <p>
+        This application was developed to provide analysts with access to the
+        most current data across all Premier League fixtures using
+        Transfermarkt.com API. It offers latest information on the squad members
+        of all Premier League clubs, as well as serves as a management system
+        for player statistics.
+      </p>
+    </mat-card>
+  </div>
   <!-- Google Map -->
-  <mat-card class="map-card">
-    <div class="map-container">
+  <div class="map-container mat-elevation-z4">
+    <mat-card class="map-card">
       <iframe
         [src]="mapsUrl"
-        width="600"
-        height="450"
+        width="700"
+        height="550"
         style="border: 0"
         loading="lazy"
         allowfullscreen
       ></iframe>
-    </div>
-  </mat-card>
+    </mat-card>
+  </div>
 </div>

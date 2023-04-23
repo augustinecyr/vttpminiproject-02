@@ -58,85 +58,45 @@
 }
 
 /* About Us */
-.about-us-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.background-container {
+    position: relative;
     background-image: url('../../assets/aboutus.jpg');
     background-size: cover;
     background-position: center;
     height: 93.5vh;
 }
 
-
-.about-us-card {
-    max-width: 600px;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transform: translateY(-80%);
-
-}
-
-.about-us-card-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #0c0c0c;
-}
-
-.about-us-card-header-icon {
-    font-size: 40px;
-    color: #fff;
-}
-
-.about-us-card-header-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #fff;
-    margin-left: 10px;
-}
-
-.about-us-card-content {
-    padding: 20px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-}
-
-.about-us-card-actions {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.about-us-card-actions-button {
-    background-color: #131212;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 4px;
-    padding: 12px 24px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.2s ease;
-}
-
-.about-us-card-actions-button:hover {
-    background-color: #1a1a1b;
-    color: white;
-}
-
 /* Google Map */
-
 .map-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    opacity: 0.95;
 }
 
-.map-container iframe {
-    position: absolute;
-    transform: translateX(-100%);
-    border: 2px solid black;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.aboutus-container {
+    position: relative;
+    align-items: center;
+    display: flex;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    opacity: 0.90;
+}
+
+.aboutus-card {
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+.aboutus-card:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }

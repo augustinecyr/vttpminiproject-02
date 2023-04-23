@@ -28,6 +28,7 @@ public class ContactController {
     private EmailService emailSvc;
 
     @PostMapping(path = "/contact", consumes = "multipart/form-data")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<String> postContact(@ModelAttribute Contact form) throws IOException {
         String email = form.getEmail();
         String title = form.getTitle();

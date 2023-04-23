@@ -26,16 +26,6 @@ export class ContactComponent implements OnInit {
   }
 
   processForm() {
-    if (!this.attachment.nativeElement.files[0]) {
-      this.snackBar.open(
-        'Please attach your screenshots for our reference!',
-        'X',
-        {
-          duration: 3000,
-        }
-      );
-      return;
-    }
     const contact = this.form.value as Contact;
     contact.attachment = this.attachment.nativeElement.files[0];
     console.log('assembling the form.....');

@@ -12,6 +12,7 @@ CREATE TABLE `contact` (
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `attachment` mediumblob,
+  `timestamp` timestamp,
   UNIQUE(`id`),
   PRIMARY KEY (`id`)
 );

@@ -41,13 +41,13 @@ export class StatsComponent implements OnInit {
   }
 
   getStats(id: string) {
-    console.log('getting stats for this player', id);
+    console.log('Player selected:', id);
     this.stats = this.statService.getStats(id);
     this.stats.subscribe((response) => console.log('Stats:', response));
   }
 
   deletePlayerById(id: string) {
-    console.log('Removing player by ID');
+    console.log('Removing selected player by ID');
     this.playerSQL = this.statService.deletePlayerById(id);
     this.statService.deletePlayerById(id).subscribe(
       () => {

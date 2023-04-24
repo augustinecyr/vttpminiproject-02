@@ -38,8 +38,7 @@ export class ContactComponent implements OnInit {
     }
     const contact = this.form.value as Contact;
     contact.attachment = this.attachment.nativeElement.files[0];
-    console.log('assembling the form.....');
-    console.info('form: ', contact);
+    console.log('Contact Form: ', contact);
 
     this.postSvc
       .postContact(contact)
@@ -49,7 +48,6 @@ export class ContactComponent implements OnInit {
       .catch((error) => {
         console.error('error: ', error);
       });
-    console.info('form sent to backend');
     this.snackBar.open(
       'Thank you for contacting us, please check your email!',
       'X',

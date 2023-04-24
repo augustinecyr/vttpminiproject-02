@@ -120,8 +120,8 @@ public class OAuth2Controller {
         .queryParam("client_secret", GOOGLE_SECRET)
         .queryParam("code", code)
         .queryParam("grant_type", "authorization_code")
-       // .queryParam("redirect_uri", "http://localhost:4200/token")
-       .queryParam("redirect_uri", "https://vttpminiproject-02.vercel.app/token")
+        // .queryParam("redirect_uri", "http://localhost:4200/token")
+        .queryParam("redirect_uri", "https://vttpminiproject-02.vercel.app/token")
         .toUriString();
 
     System.out.println(accessTokenEndpoint);

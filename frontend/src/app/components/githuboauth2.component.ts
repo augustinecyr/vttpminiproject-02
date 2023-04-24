@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { UserData } from '../models';
 import { UserService } from '../user.service';
 
@@ -28,9 +28,9 @@ export class GithubOauth2Component implements OnInit {
       console.log(this.code);
       if (this.code) {
         this.userService.getGithubToken(this.code).subscribe((response) => {
-          console.log('Response:', response);
+          //  console.log('Response:', response);
           this.accessToken = response.access_token;
-         // console.log('Access token:', this.accessToken);
+          // console.log('Access token:', this.accessToken);
           // post the token using getUser
           this.userService.getGithubUser(this.accessToken).subscribe((user) => {
             console.log('User:', user);

@@ -36,8 +36,8 @@ export class StatsComponent implements OnInit {
   }
 
   getListFromSQL() {
-    console.log('fetching the list of players from MySQL');
     this.playerSQL = this.statService.getListFromSQL();
+    console.log('List:',this.playerSQL);
   }
 
   getStats(id: string) {

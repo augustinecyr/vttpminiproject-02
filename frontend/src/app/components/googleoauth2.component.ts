@@ -29,9 +29,9 @@ export class Googleoauth2Component implements OnInit {
         this.userService
           .getGoogleToken(this.googlecode)
           .subscribe((response) => {
-            console.log('Response:', response);
+            // console.log('Response:', response);
             this.googleToken = response.access_token;
-        //    console.log('Access token:', this.googleToken);
+            // console.log('Access token:', this.googleToken);
             // post the token using getGoogleToken
             this.userService
               .getGoogleUser(this.googleToken)

@@ -18,7 +18,7 @@ export class ContactService {
 
 		return firstValueFrom(
 			//this.http.post<Contact>('http://localhost:8080/contact', form)
-			this.http.post<Contact>('https://vttpminiproject-02-augustine.up.railway.app/contact', form)
+			this.http.post<Contact>('https://footrix.up.railway.app/contact', form)
 		)
 
 	}

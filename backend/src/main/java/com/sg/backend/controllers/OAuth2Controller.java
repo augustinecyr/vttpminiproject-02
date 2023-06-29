@@ -48,7 +48,7 @@ public class OAuth2Controller {
   public String handleGoogleCallback(@AuthenticationPrincipal OAuth2User principal) {
 
     // return "redirect:http://localhost:4200/token";
-    return "redirect:https://vttpminiproject-02.vercel.app/token";
+    return "redirect:https://footrix.vercel.app/token";
 
   }
 
@@ -57,7 +57,7 @@ public class OAuth2Controller {
   public String handleGithubCallback(@AuthenticationPrincipal OAuth2User principal) {
 
     // return "redirect:http://localhost:4200/login/oauth/access_token";
-    return "redirect:https://vttpminiproject-02.vercel.app/login/oauth/access_token";
+    return "redirect:https://footrix.vercel.app/login/oauth/access_token";
 
   }
 
@@ -121,7 +121,7 @@ public class OAuth2Controller {
         .queryParam("code", code)
         .queryParam("grant_type", "authorization_code")
         // .queryParam("redirect_uri", "http://localhost:4200/token")
-        .queryParam("redirect_uri", "https://vttpminiproject-02.vercel.app/token")
+        .queryParam("redirect_uri", "https://footrix.vercel.app/token")
         .toUriString();
 
     System.out.println(accessTokenEndpoint);

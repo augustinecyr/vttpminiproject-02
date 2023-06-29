@@ -8,7 +8,7 @@ export class FixturesService {
 
   getFixtures(dayID: string) {
  //   const url = `http://localhost:8080/fixtures/matchweek?dayID=${dayID}`;
- const url = `https://vttpminiproject-02-augustine.up.railway.app/fixtures/matchweek?dayID=${dayID}`;
+ const url = `https://footrix.up.railway.app/fixtures/matchweek?dayID=${dayID}`;
     console.log("url:", url)
     return this.http.get<Fixtures[]>(url);
   }

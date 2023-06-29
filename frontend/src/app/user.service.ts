@@ -49,7 +49,7 @@ export class UserService {
     console.log(params);
 
    // return this.http.post<any>('http://localhost:8080/token', params, { headers,});
-    return this.http.post<any>('https://vttpminiproject-02-augustine.up.railway.app/token', params, { headers,});
+    return this.http.post<any>('https://footrix.up.railway.app/token', params, { headers,});
 
   }
   // use the google token and get the email & name
@@ -76,7 +76,7 @@ export class UserService {
     console.log(params);
 
    // return this.http.post<any>('http://localhost:8080/login/oauth/access_token',params,{ headers });
-    return this.http.post<any>('https://vttpminiproject-02-augustine.up.railway.app/login/oauth/access_token',params,{ headers });
+    return this.http.post<any>('https://footrix.up.railway.app/login/oauth/access_token',params,{ headers });
 
   }
 

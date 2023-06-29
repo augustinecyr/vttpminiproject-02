@@ -26,7 +26,7 @@ public class SecurityConfiguration {
                 .and()
                 // the path for login
                // .oauth2Login().loginPage("http://localhost:4200/login");
-               .oauth2Login().loginPage("https://vttpminiproject-02.vercel.app/login");
+               .oauth2Login().loginPage("https://footrix.vercel.app/login");
         return http.build();
     }
 
@@ -38,7 +38,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200" , "https://vttpminiproject-02.vercel.app" ));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200" , "https://footrix.vercel.app" ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("Authorization"));

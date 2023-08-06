@@ -1,4 +1,4 @@
-# Footrix - VTTP Mini Project 02
+# Footrix
 
 ## Table of Contents
 
